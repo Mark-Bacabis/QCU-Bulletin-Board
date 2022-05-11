@@ -215,9 +215,9 @@ section.center-information .center-header p span:first-child{
 
 
 .center-content .dashboard-container{
-   height: 100%;
+   height: 100vh;
    width: 100%;
-   display: none;
+   display: flex;
    flex-direction: column;
    padding: 0 4%;
 }
@@ -513,8 +513,9 @@ section.center-information .center-header p span:first-child{
 
 .mv-container{
    padding: 0 4%;
-   display: flex;
+   display: none;
    flex-direction: column;
+   height: 100%;
 }
 
 .mv-container .title-header h2{

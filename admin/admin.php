@@ -109,7 +109,9 @@
                      </div>
                   </div>
                   
-               </div>  
+               </div> 
+            <!-- xxx DASHBOARD -->   
+               
             <!-- ANNOUNCEMENTS -->
                <div class="events-container" id="events-container">
                   <div class="title-header">
@@ -169,6 +171,8 @@
                      </div>
                   </div>
                </div>
+            <!--xxx ANNOUNCEMENTS -->
+
 
             <!-- ABOUT -->
             <!-- history -->
@@ -190,7 +194,7 @@
             <!-- xx history xx-->
 
              <!-- Mission Vision -->
-             <div class="mv-container">
+             <div class="mv-container" id="mv-container">
                <div class="title-header">
                   <h2> Mission and Vision </h2>
                   <hr>
