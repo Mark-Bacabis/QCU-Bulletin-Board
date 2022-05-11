@@ -1,1 +1,1 @@
-Maglagay ng kung ano-ano
+Maglagay ng kung ano-ano. Magbago akooo
