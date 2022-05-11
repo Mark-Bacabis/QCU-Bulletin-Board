@@ -15,71 +15,14 @@
    <title> QCU Bulletin Board Dashboard </title>
 </head>
 
+<!-- AJAX PLUGINS -->
+<script src="http://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+
+<script src="../ajax/events.js"> </script>
+
 <body>
    <main>
-      <section class="left-dashboard-minimize">
-         <div class="left-header">
-            <div class="qcu-title">
-               <img src="../icon/qcu-logo.png" alt="">
-            </div>
-
-            <div class="burger-icon" id="burger-icon-max">
-               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
-                  <g id="Group_162" data-name="Group 162" transform="translate(-220 -28)">
-                     <rect id="Rectangle_195" data-name="Rectangle 195" width="25" height="3" rx="1.5" transform="translate(220 28)" fill="#fff"/>
-                     <rect id="Rectangle_196" data-name="Rectangle 196" width="19" height="3" rx="1.5" transform="translate(226 34)" fill="#fff"/>
-                     <g id="Group_148" data-name="Group 148" transform="translate(223.396 40)">
-                        <rect id="Rectangle_197" data-name="Rectangle 197" width="22" height="3" rx="1.5" transform="translate(-0.396)" fill="#fff"/>
-                     </g>
-                  </g>
-               </svg>
-            </div>
-         </div>
-
-         <nav>
-            <div class="selected" id="selected-mob">
-               
-            </div>
-            <ul>
-               <li>  
-                  <a id="link-dashboard-mob"> 
-                     <img src="../icon/dashboard.png" class="dashboard-icon" >
-                  </a> 
-               </li>
-               <li>  
-                  <a id="link-student-mob"> 
-                     <img src="../icon/student-with-graduation-cap.png" class="dashboard-icon" >
-                  </a> 
-               </li>
-               <li>  
-                  <a id="link-courses-mob"> 
-                     <img src="../icon/online-education.png" class="dashboard-icon">
-                  </a> 
-               </li>
-               <li>  
-                  <a id="link-exam-mob"> 
-                     <img src="../icon/exam.png" class="dashboard-icon">
-                  </a> 
-               </li>
-               <!--<li>  
-                  <a id="link-subject-mob"> 
-                     <img src="../icon/book.png" class="dashboard-icon">
-                  </a> 
-               </li> -->
-               <li>  
-                  <a id="link-events-mob"> 
-                     <img src="../icon/calendar-silhouette.png" class="dashboard-icon">
-                  </a> 
-               </li>
-               
-            </ul>
-         </nav>
-
-
-         <div class="left-footer">
-            <img src="../icon/logo-black.png">
-         </div>
-      </section>
 
       <section class="left-dashboard">
          <div class="left-header">
@@ -90,21 +33,10 @@
                   <p> Bulletin Board </p>
                </div>
             </div>
-            <div class="burger-icon" id="burger-icon">
-               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
-                  <g id="Group_162" data-name="Group 162" transform="translate(-220 -28)">
-                     <rect id="Rectangle_195" data-name="Rectangle 195" width="25" height="3" rx="1.5" transform="translate(220 28)" fill="#fff"/>
-                     <rect id="Rectangle_196" data-name="Rectangle 196" width="19" height="3" rx="1.5" transform="translate(226 34)" fill="#fff"/>
-                     <g id="Group_148" data-name="Group 148" transform="translate(223.396 40)">
-                        <rect id="Rectangle_197" data-name="Rectangle 197" width="22" height="3" rx="1.5" transform="translate(-0.396)" fill="#fff"/>
-                     </g>
-                  </g>
-               </svg>
-            </div>
          </div>
 
-         <nav>
-            <div class="nav-link">
+         <nav id="navigation-side">
+            <div class="nav-link selected">
                <img src="../icon/dashboard.png" alt="">
                <h1>Overview</h1>
             </div>
@@ -150,11 +82,130 @@
          <div class="center-content">
             <!-- DASHBOARD -->
                <div class="dashboard-container" id="dashboard-container">
+                  <div class="overview">
+                     <div class="title-header">
+                        <h2> Overview </h2>
+                        <hr>
+                     </div>
+
+                     <div class="charts">
+                        <div class="box donut-container"> 
+                              
+                        </div>
+                        <div class="box pie-container"> 
+                            
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="announcement">
+                     <div class="title-header">
+                        <h2> Announcement </h2>
+                        <hr>
+                     </div>
+
+                     <div class="announce-box">
+                       
+                     </div>
+                  </div>
+                  
+               </div>  
+            <!-- ANNOUNCEMENTS -->
+               <div class="events-container" id="events-container">
                   <div class="title-header">
-                     <h2> Overview </h2>
+                     <h2> Announcement and Events </h2>
                      <hr>
                   </div>
-               </div>  
+
+                  <div class="events-form">
+                     <div class="top-form">
+                        <input type="text" name="title" id="title" placeholder="Title here">
+                        <div class="select-date">
+                           <select name="type" id="type" onchange="disableImg()">
+                              <option value="Announcement"> Announcement </option>
+                              <option value="Events"> Events </option>
+                       
+                           </select>
+
+                           <select name="courses" id="courses">
+                              <option value="Overall"> Overall </option>
+                              <option value="BSIT"> BSIT </option>
+                              <option value="BSIE"> BSIE </option>
+                              <option value="BSENT"> BSENT </option>
+                              <option value="BSECE"> BSECE </option>
+                              <option value="BSA"> BSA </option>
+                           </select>
+                        </div>
+                     </div>
+                     
+                     <div class="event-desc">
+                        <textarea name="desc" id="event-desc" placeholder="Announcements and Events"></textarea>
+                     </div>
+
+                     <div class="submit-form">
+                        <input type="url" name="link" id="link" placeholder="Url: www.example.com">
+                        <input type="file" name="eventImg" id="event-img" disabled>
+                        <button id="Post" onclick="Post()"> Post </button>
+                        
+                     </div>
+
+                  </div>
+
+                  <div class="events-output">
+                     <div class="button-header">
+                        <button id="announcement" class="selected-event"> Announcement </button>
+                        <button id="events"> Events </button>
+                     </div>
+                     
+                     <div class="output-container" id="output-container">
+                        <div class="events-content-box">
+                       
+                           <div class="events-data">
+                              <h1>  </h1>
+                              <p>  <a target="blank" href="#"> Learn More </a> </p>
+                           </div>
+                  
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+            <!-- ABOUT -->
+            <!-- history -->
+            <div class="history-container">
+               <div class="title-header">
+                  <h2> History </h2>
+                  <hr>
+               </div>
+
+               <div class="history-form">
+                  <textarea name="history" id="history"></textarea>
+
+                  <div class="history-button">
+                     <input type="file" name="historyPic" id="historyPic">
+                     <button id="HistoryPost" onclick="Post()"> Post </button>
+                  </div>
+               </div>
+            </div>
+            <!-- xx history xx-->
+
+             <!-- Mission Vision -->
+             <div class="mv-container">
+               <div class="title-header">
+                  <h2> Mission and Vision </h2>
+                  <hr>
+               </div>
+
+               <div class="mv-form">
+                  <select name="mvOption" id="mv-option">
+                     <option value="Mission"> Mission </option>
+                     <option value="Vision"> Vision </option>
+                  </select>
+                  <textarea name="mv" id="mv"></textarea>
+                  <button id="mvPost"> Post </button>
+               </div>
+            </div>
+            <!-- xx Mission Vision  xx-->
          </div>
       </section>
 
@@ -201,7 +252,8 @@
       </section>
    </main>
 </body>
-
+<script src="../Javascript/admin.js"></script>
+<script src="../Javascript/eventsButton.js"></script>
 <script src="../Javascript/calendar.js"></script>
 <script src="../Javascript/dateNow.js"></script>
 

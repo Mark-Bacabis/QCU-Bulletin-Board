@@ -1,20 +1,20 @@
 $(document).ready(function(){
    $('#announcement').click(function(){
       var announceBtn = $('#announcement').val();
-      $('#output-container').load('process/events.php', {
+      $('#output-container').load('../admin/process/events.php', {
          announceBtn:announceBtn,
       });
    });
    $('#news').click(function(){
       var newsBtn = $('#news').val();
-      $('#output-container').load('process/events.php', {
+      $('#output-container').load('../admin/process/events.php', {
          newsBtn:newsBtn
       });
    });
 
    $('#events').click(function(){
       var eventsBtn = $('#events').val();
-      $('#output-container').load('process/events.php', {
+      $('#output-container').load('../admin/process/events.php', {
          eventsBtn:eventsBtn
       });
    });
