@@ -1,7 +1,3 @@
-<?php 
-error_reporting(1);
-session_start(); 
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +20,7 @@ session_start();
             <h2> Quezon City University </h2>
          </div>
          
-         <form action="process/login.php" method="POST">
+         <form action="./admin.php" method="POST">
            
             <label for="user"> Username </label>
             <input type="text" name="user" id="user">
@@ -32,7 +28,7 @@ session_start();
             <input type="password" name="pass" id="pass">
             <input type="submit" value="Login" name="loginBtn">
          </form>
-         <p> <?=$_SESSION['errMess'] ?></p>
+         <p> </p>
       </div>
       <div class="footer">
          <p> &copy; NxtBrigade | 2021 </p>
@@ -41,4 +37,3 @@ session_start();
 
 </body>
 </html>
-<?php unset($_SESSION['errMess']); ?>

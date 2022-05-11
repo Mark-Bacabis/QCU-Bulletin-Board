@@ -103,6 +103,40 @@
             </div>
          </div>
 
+         <nav>
+            <div class="nav-link">
+               <img src="../icon/dashboard.png" alt="">
+               <h1>Overview</h1>
+            </div>
+            <div class="nav-link" >
+            <img src="../icon/loudspeaker.png" alt="">
+               <h1>Announcement</h1>
+            </div>
+            <div class="nav-link about">
+               <img src="../icon/info-button.png" alt="">
+               <div class="drop-down-about">
+                  <h1>About</h1>
+                  <img src="../icon/down-filled-triangular-arrow.png" alt="">
+               </div>
+              
+
+               <div class="secondary-nav-about">
+                  <div class="sec-nav-link">
+                     <h2>History</h2>
+                  </div>
+                  <div class="sec-nav-link">
+                     <h2>Mision & Vision </h2>
+                  </div>
+                  <div class="sec-nav-link">
+                     <h2> Strategic Direction & Shared Values </h2>
+                  </div>
+                  <div class="sec-nav-link">
+                     <h2>Executive Officials</h2>
+                  </div>
+               </div>
+            </div>
+         </nav>
+
       
       </section>
 

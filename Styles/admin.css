@@ -138,13 +138,10 @@ section.left-dashboard{
    overflow: hidden;
    background-color: #fff;
    box-shadow: 0 0 13px 0 rgba(0,0,0,.2);
-   display: flex;
-   flex-direction: column;
-   justify-content: space-between;
 }
 
 section.left-dashboard .left-header{
-   background-color: #2C2C51;
+   background-color: #002347;
    padding: 15px;
    color: #fff;
    display: flex;
@@ -175,70 +172,74 @@ section.left-dashboard .left-header .qcu-title .text h3{
 
 section.left-dashboard .left-header .qcu-title .text p{
    font-size: .8em;
-} 
-
-
-
-
-section.left-dashboard nav{
-   margin-top: 20px;
-   font-size: 1em;
-   position: relative;
 }
 
-section.left-dashboard nav .selected{
-   background-color: #004D97;
-   width: 100%;
-   height: 20%;
-   top: 0;   
-   position: absolute;
-   transition: top ease-in-out .2s;
+
+.left-dashboard nav{
+   
+   margin-top: 50px;
+  
 }
 
-section.left-dashboard nav ul li{
-   list-style: none;
-   height: 70px;
-   width: 100%;
+.left-dashboard nav .nav-link{
    display: flex;
    align-items: center;
-   position: relative;
-   transition: background ease-in-out .2s;
+   padding: 20px 15%;
+}
+
+.left-dashboard nav .nav-link:hover{
    cursor: pointer;
+   background-color: #023047;  
 }
 
-section.left-dashboard nav ul li:hover{
-   background-color: #00417e9a;
-}
-
-
-
-section.left-dashboard nav ul li a{
-   text-decoration: none;
-   color: rgb(0, 0, 0);
-   text-transform: capitalize;
-   width: 100%;
-   height: 100%;
-   display: flex;
-   align-items: center;
-   padding: 0 20px;
-   padding-left: 40px;
-   letter-spacing: 1px;
-   font-size: 1em;
-   font-weight: 500;
-   transition: filter ease-in-out .2s;
-}
-
-section.left-dashboard nav ul li:first-child a{
+.left-dashboard nav .nav-link:hover img, .nav-link:hover h1{
    filter: invert(1);
 }
 
-section.left-dashboard nav ul li a img{
+
+.left-dashboard nav .nav-link img{
    width: 25px;
-   margin-right: 20px;
+   height: 25px;
+   margin-right: 15px;
+}
+
+.left-dashboard nav .nav-link h1{
+   font-size: 1.2em;
+   letter-spacing: .5px;
+   font-weight: 500;
+}
+
+.left-dashboard nav .nav-link .drop-down-about{
+   display: flex;
+   align-items: center;
 }
 
 
+.left-dashboard nav .nav-link .drop-down-about img{
+   width: 15px;
+   height: 15px;
+   margin-left: 10px;
+}
 
+.left-dashboard nav .about{
+   position: relative;
+   display: flex;
+   align-items: center;
+}
+.left-dashboard nav .about .secondary-nav-about{
+   position: absolute;
+   top: 100%;
+   left: 25%;
+}
+
+.left-dashboard nav .about .secondary-nav-about .sec-nav-link{
+   margin: 12px 0;
+}
+
+.left-dashboard nav .about .secondary-nav-about .sec-nav-link h2{
+   font-size: 1em;
+   font-weight: 400;
+}
 
 
 
@@ -928,7 +929,7 @@ section.right-dashboard{
 }
 
 section.right-dashboard .right-header{
-   background-color: #2C2C51;
+   background-color: #002347;
    color: white;
    display: flex;
    align-items: center;
