@@ -239,25 +239,6 @@ section.left-dashboard nav ul li a img{
 
 
 
-section.left-dashboard .left-footer{
-   display: flex;
-   align-items: center;
-   justify-self: center;
-   padding: 0 40px;
-   height: 15%;
-}
-section.left-dashboard .left-footer p{
-   text-transform: uppercase;
-   font-weight: 600;
-}
-
-section.left-dashboard .left-footer img{
-   width: 35px;
-   margin-right: 10px;
-}
-
-
-
 
 
 

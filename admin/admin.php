@@ -87,7 +87,7 @@
                <img src="../icon/qcu-logo.png" alt="">
                <div class="text">
                   <h3> Quezon City University </h3>
-                  <p> Good life, Starts Here.</p>
+                  <p> Bulletin Board </p>
                </div>
             </div>
             <div class="burger-icon" id="burger-icon">
@@ -103,50 +103,7 @@
             </div>
          </div>
 
-         <nav>
-            <div class="selected" id="selected">
-               
-            </div>
-            <ul>
-               <li>  
-                  <a id="link-dashboard"> 
-                     <img src="../icon/dashboard.png" class="dashboard-icon" > dashboard 
-                  </a> 
-               </li>
-               <li>  
-                  <a id="link-student"> 
-                     <img src="../icon/student-with-graduation-cap.png" class="dashboard-icon" > Student
-                  </a> 
-               </li>
-               <li>  
-                  <a id="link-courses"> 
-                     <img src="../icon/online-education.png" class="dashboard-icon" > courses
-                  </a> 
-               </li>
-               <li>  
-                  <a id="link-exam"> 
-                     <img src="../icon/exam.png" class="dashboard-icon" > exam 
-                  </a> 
-               </li>
-               <!--<li>  
-                  <a id="link-subject"> 
-                     <img src="../icon/book.png" class="dashboard-icon" > subject
-                  </a> 
-               </li> -->
-               <li>  
-                  <a id="link-events"> 
-                     <img src="../icon/calendar-silhouette.png" class="dashboard-icon" > events
-                  </a> 
-               </li>
-               
-            </ul>
-         </nav>
-
-
-         <div class="left-footer">
-           
-            <p> QCU Bulletin Board </p>
-         </div>
+      
       </section>
 
 
