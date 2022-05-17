@@ -4,7 +4,6 @@
    announceBtn.addEventListener('click', ()=>{
       announceBtn.classList.add('selected-event');
       eventsBtn.classList.remove('selected-event');
-      
    });
 
    eventsBtn.addEventListener('click', ()=>{

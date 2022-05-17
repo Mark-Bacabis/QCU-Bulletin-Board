@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +21,7 @@
             <h2> Quezon City University </h2>
          </div>
          
-         <form action="./admin.php" method="POST">
+         <form action="../process/identify-user.php" method="POST">
            
             <label for="user"> Username </label>
             <input type="text" name="user" id="user">
@@ -31,7 +32,7 @@
          <p> </p>
       </div>
       <div class="footer">
-         <p> &copy; NxtBrigade | 2021 </p>
+         <p> &copy; QCU Bulletin Board | 2022 </p>
       </div>
    </main>
 
