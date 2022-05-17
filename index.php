@@ -1,1 +1,0 @@
-Maglagay ng kung ano-ano. Magbago akooo
