@@ -4,6 +4,7 @@
    margin: 0;
    font-family: 'Poppins', Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
    box-sizing: border-box;
+   outline: none;
 }
 
 ::-webkit-scrollbar{
@@ -22,9 +23,8 @@
 
 main{
    display: flex;
-   width: 100vw;
+   width: 100%;
    height: 100vh;
-   overflow: hidden;
    background-color: #f1f1f1;
 }
 
@@ -33,7 +33,6 @@ main{
 section.left-dashboard{
    width: 20%;
    height: 100%;
-   overflow: hidden;
    background-color: #fff;
    box-shadow: 0 0 13px 0 rgba(0,0,0,.2);
 }
@@ -165,63 +164,73 @@ section.left-dashboard .left-header .qcu-title .text p{
 section.center-information{
    width: 55%;
    height: 100vh;
+   overflow: hidden;
 }
 
 section.center-information .center-header{
    padding: 10px 20px;
    font-size: 1em;
-   height: 7vh;
+   height: 7%;
    display: flex;
    align-items: center;
-   justify-content: right;
+   justify-content: space-between;
+   background-color: #ffffff;
+   color: rgba(0, 0, 0, 0.76);
    
 }
 
+section.center-information .center-header .title h1{
+   letter-spacing: 1px;
+   font-weight: 500;
+   font-size: 1.2em;
+}
+
 section.center-information .center-header p span:first-child{
-   border-right: 2px solid rgba(0, 0, 0, 0.527);
+   border-right: 2px solid rgba(0, 0, 0, 0.479);
    padding-right: 5px;
+}
+
+.center-content{
+   height: 100%;
+   padding-bottom: 4%;
+
 }
 
 
 
-
-
-
-
-/* DASHBOARD CONTAINER */
 
 .center-content div .title-header{
    display: flex;
    align-items: center;
-   height: max-content;
+   justify-content: space-between;
+   width: 100%;
+   margin-bottom: 20px;
 }
 
 .center-content  div .title-header h2{
-   width: max-content;
-   min-width: 35%;
+   width: auto;
    letter-spacing: 1px;
    margin-right: 10px;
 }
 
 .center-content div .title-header hr{
-   width: 100%;
-   border: 1px solid rgb(59, 59, 59);
+   display: flex;
+   width: 60%;
+   border: 2px solid rgb(59, 59, 59);
 }
 
 
+/* CONTAINERS */
 
 
 
-
-
-
+/* DASHBOARD CONTAINER */
 
 .center-content .dashboard-container{
-   height: 100vh;
+   height: 100%;
    width: 100%;
-   display: none;
+   display: flex;
    flex-direction: column;
-   
 }
 
 .center-content .dashboard-container .overview{
@@ -314,6 +323,273 @@ section.center-information .center-header p span:first-child{
 
 
 
+/* ADMIN ASSISTANT */ 
+.admin-assist-container{
+   width: 100%;
+   height: 100%;
+   padding: 0 4%;
+   display: none;
+   flex-direction: column;
+   position: relative;
+}
+
+
+.admin-assist-container .assistants{
+
+   height: 100%; 
+   overflow-y: scroll;
+   display: flex;
+   flex-direction: column;
+}
+
+.admin-assist-container .assistants .add-assistant{
+   margin-bottom: 10px;
+   display: flex;
+   flex-direction: row-reverse;
+   align-items: center;
+   justify-content: space-between;
+}
+
+
+.admin-assist-container .assistants .add-assistant button{
+   background-color: rgb(71, 182, 90);
+   color: #fff;
+   padding: 3px 10px;
+   outline: none;
+   border: none;
+   border-radius: 4px;
+   font-size: 1em;
+   display: flex;
+   cursor: pointer;
+   align-items: center;
+   justify-content: space-between;
+}
+
+
+.admin-assist-container .assistants .add-assistant button .icon{
+   border-radius: 50%;
+   border: 2px solid #fff;
+   height: 20px;
+   width: 20px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-right: 5px;
+}
+
+
+.admin-assist-container .assistants table{
+   width: 100%;
+   font-size: 1em;
+}
+
+.admin-assist-container .assistants table tr th{
+   border-top: 2px solid black;
+   border-bottom: 2px solid black;
+   font-size: 1rem;
+   font-weight: 600;
+}
+.admin-assist-container .assistants table tr td{
+   text-align: center;
+   font-size: .95rem;
+}
+
+.admin-assist-container .assistants table tr:nth-child(2n + 0){
+   background-color: rgba(0, 0, 0, 0.185);
+}
+
+
+/* ADMIN ASSISTANT FOR ADDING (MODAL)  */
+.admin-assist-container .assistant-modal{
+   position: absolute;
+   background-color: rgba(0, 0, 0, 0.658);
+   width: 100%;
+   height: 100%;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%, -50%);
+   display: none;
+   align-items: center;
+   justify-content: center;
+}
+
+
+.admin-assist-container .assistant-modal .assistant-form{
+   background-color: #fff;
+   height: max-content;
+   min-height: 450px;
+   width: 50%;
+   padding: 20px 40px;
+   border-radius: 5px;
+}
+.admin-assist-container .assistant-modal .assistant-form h1{
+   margin-bottom: 10px;
+}
+
+.admin-assist-container .assistant-modal .assistant-form .form-input{
+   margin-bottom: 20px;
+   display: flex;
+   flex-direction: column;
+}
+
+.admin-assist-container .assistant-modal .assistant-form .form-input label{
+   margin-bottom: 5px;
+   font-size: .9rem;
+}
+
+.admin-assist-container .assistant-modal .assistant-form .form-input input{
+   outline: none;
+   font-size: 1rem;
+   padding: 3px 7px;
+   border: 1px solid rgba(0, 0, 0, 0.808);
+   border-radius: 3px;
+}
+
+
+.admin-assist-container .assistant-modal .assistant-form .form-button{
+   display: flex;
+   float: right;
+}
+
+.admin-assist-container .assistant-modal .assistant-form .form-button button{
+   font-size: .9em;
+   width: 80px;
+   padding: 3px;
+   margin-left: 6px;
+   cursor: pointer;
+   background-color: rgb(211, 211, 211);
+   border-radius: 3px;
+   border: none;
+   color: rgba(0, 0, 0, 0.699);
+   transition: all linear .3s;
+}
+
+.admin-assist-container .assistant-modal .assistant-form .form-button button#add{
+   background-color: rgb(79, 182, 101);
+   color: #fff;
+}
+
+.admin-assist-container .assistant-modal .assistant-form .form-button button:hover{
+   background-color: rgba(0, 0, 0, 0.315);
+}
+
+
+/*  HEAD DEPT */
+.head-dept-container{
+   width: 100%;
+   height: 100%;
+   padding: 0 4%;
+   display: none;
+   flex-direction: column;
+}
+
+
+
+/* RESULT DIV */
+.result{
+   font-size: .9em;
+}
+
+/* STUDENTS */
+.students-container{
+   width: 100%;
+   height: 100%;
+   padding: 0 4%;
+   display: none;
+   flex-direction: column;
+   position: relative;
+}
+
+.students-container .search{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+ 
+}
+
+.students-container .search .search-select{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.students-container .search .search-select input, .search-select select{
+   padding: 2px 7px;
+   margin-left: 6px;
+}
+
+.students-container .search .search-select input{
+   width: 300px;
+}
+
+.students-container table{
+   width: 100%;
+   font-size: .85em;
+   margin-top: 10px;
+}
+
+.students-container table tr th{
+   border-top: 2px solid black;
+   border-bottom: 2px solid black;
+
+   font-weight: 600;
+}
+.students-container table tr td{
+   text-align: center;
+
+}
+
+.students-container table tr:nth-child(2n + 0){
+   background-color: rgba(0, 0, 0, 0.185);
+}
+
+
+/* ACTIVITY LOG */
+.act-log-container{
+   width: 100%;
+   height: 100%;
+   padding: 0 4%;
+   display: none;
+   flex-direction: column;
+   
+}
+
+.act-log-container .date-act{
+   display: flex;
+   justify-content: space-between;
+  
+}
+
+
+.act-log-container table{
+   width: 100%;
+   font-size: .85em;
+   margin-top: 10px;
+   text-align: left;
+}
+
+.act-log-container table tr th{
+   background-color: rgba(0, 0, 0, 0.199);
+   padding: 2px 10px;
+   font-weight: 500;
+}
+
+.act-log-container table tr td{
+   text-align: center;
+   /* background-color: #fff; */
+   text-align: left;
+   padding: 2px 10px;
+ 
+}
+
+.act-log-container table td:last-child, .act-log-container table th:last-child {
+   border-left: 1px solid rgba(0, 0, 0, 0.555);
+   text-align: right;
+}
+
+.act-log-container table td:last-child{
+   font-size: .8em;
+}
 
 
 
@@ -329,10 +605,7 @@ section.center-information .center-header p span:first-child{
 
 
 
-
-
-
-
+/* RIGHT DASHBOARD */
 section.right-dashboard{
    width: 25%;
    height: 100%;
@@ -407,43 +680,3 @@ section.right-dashboard .right-header .icon-setting a img{
 }
 
 
-
-
-.right-dashboard .student-activity{
-   height: 48%;
-   padding: 10px 15px;
-}
-
-.right-dashboard .student-activity .activities{
-   width: 100%;
-   height: 65%;
-   margin-top: 5px;
-   overflow-y: scroll;
-   overflow-x: hidden;
-}
-
-.right-dashboard .student-activity .activities .user-info{
-   background-color: #e5e5eb;
-   display: flex;
-   align-items: center;
-   border-radius: 5px;
-   padding: 5px;
-   margin: 10px 0;
-}
-
-.right-dashboard .student-activity .activities .user-info img{
-   width: 40px;
-   height: 40px;
-   margin-right: 10px;
-}
-
-.right-dashboard .student-activity .activities .user-info .user-text{
-   font-size: .85em;
-   letter-spacing: .5px;
-   line-height: 18px;
-}
-
-.right-dashboard .student-activity .activities .user-info .user-text p{
-   font-size: .81em;
-   letter-spacing: 0;
-}

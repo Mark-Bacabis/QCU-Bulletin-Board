@@ -1,5 +1,6 @@
 <?php 
-  require('./session.php');
+  error_reporting(1);
+  //require('./session.php');
   require('./database.php');
 
   // if (isset($_POST["edit"])) {
@@ -365,6 +366,7 @@
 body.dark {
 	background: #292c35;
 }
+
 .main .bulletin .wrapper .logout .btn_logout{
   font-size:18px;
   font-weight:700 ;
