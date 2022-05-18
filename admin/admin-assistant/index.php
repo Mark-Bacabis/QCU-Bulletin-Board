@@ -184,49 +184,204 @@
             <!-- xx ANNOUNCEMENT -->
 
             <!-- MAINTENANCE  -->
-            <div class="maintenance-container container">
-               <div class="title-header">
-                  <h2> Maintenance </h2>
-                  <hr>
-               </div>
+               <div class="maintenance-container container">
+                  <div class="title-header">
+                     <h2> Maintenance </h2>
+                     <hr>
+                  </div>
 
-               <div class="pages" id="pages">
+                  <div class="pages" id="pages">
 
-                  <!-- ADD CONTENT HERE... -->
-                  <div class="history-container page-container">
-                     <div class="history-title page-title">
-                        <h1>History</h1>
-                        <img src="../../icon/down-filled-triangular-arrow.png" alt="">
-                     </div>
-                     <div class="history-content page-content">
-                        <div class="content">
-                           <textarea name="history" id="history"></textarea>
-                           <div class="form-input">
-                              <input type="file" name="historyImg" id="historyImg">
-                              <button id="post"> Post </button>
+                     <!-- ADD CONTENT HERE... -->
+                     <div class="page-container">
+                        
+                        <div class="history-title page-title">
+                           <h1>History</h1>
+                           <img src="../../icon/down-filled-triangular-arrow.png" alt="">
+                        </div>
+                        
+                        <div class="history-content page-content">
+                           <div class="content">
+                              <textarea name="history" id="history"></textarea>
+                              <div class="form-input">
+                                 <input type="file" name="historyImg" id="historyImg">
+                                 <button id="post"> Post </button>
+                              </div>
                            </div>
                         </div>
                      </div>
-                  </div>
 
-                  <div class="history-container page-container">
-                     <div class="history-title page-title">
-                        <h1>History</h1>
-                        <img src="../../icon/down-filled-triangular-arrow.png" alt="">
-                     </div>
-                     <div class="history-content page-content">
-                        <div class="content">
-                           <textarea name="history" id="history"></textarea>
-                           <div class="form-input">
-                              <input type="file" name="historyImg" id="historyImg">
-                              <button id="post"> Post </button>
+                     <div class="page-container">
+                        <div class="history-title page-title">
+                           <h1> Mission and Vision </h1>
+                           <img src="../../icon/down-filled-triangular-arrow.png" alt="">
+                        </div>
+                        <div class="history-content page-content">
+                           <div class="content">
+                              <textarea name="history" id="history"></textarea>
+                              <div class="form-input">
+                                 <select name="mv" id="mv">
+                                    <option value="Mission"> Mission </option>
+                                    <option value="Vision"> Vision </option>
+                                 </select>
+                                 <button id="post"> Post </button>
+                              </div>
                            </div>
                         </div>
                      </div>
+
+                     <div class="page-container">
+                        <div class="history-title page-title">
+                           <h1> Strategic Direction & Shared Values </h1>
+                           <img src="../../icon/down-filled-triangular-arrow.png" alt="">
+                        </div>
+                        <div class="history-content page-content">
+                           <div class="content">
+                              <textarea name="history" id="history"></textarea>
+                              <div class="form-input">
+                                 <select name="sdsv" id="sdsv">
+                                    <option value="sd"> Strategic Direction </option>
+                                    <option value="sv"> Shared Values </option>
+                                 </select>
+
+                                 <button id="post"> Post </button>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="page-container">
+                        <div class="history-title page-title">
+                           <h1> Executive Officials </h1>
+                           <img src="../../icon/down-filled-triangular-arrow.png" alt="">
+                        </div>
+                        <div class="history-content page-content">
+                           <div class="content">
+                           
+                              <div class="form-input">
+                                 
+                              </div>
+
+
+                              <div class="form-input">
+                                 <input type="file" name="historyImg" id="historyImg">
+                                 <button id="post"> Post </button>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     
                   </div>
                </div>
-            </div>
             <!-- xx MAINTENANCE -->
+
+            <!-- REQUEST -->
+               <div class="request-container container">
+                  <div class="title-header">
+                     <h2> </h2>
+                     <hr>
+                  </div>         
+                  
+                  <div class="request">
+                     <div class="result">
+                        <p> Result: 3 </p>
+                     </div>
+                  
+                     <table border="0">
+                        <tr>
+                           <th> id </th>
+                           <th> emp id </th>
+                           <th> Fullname </th>
+                           <th> Dept </th>
+                           <th> Date </th>
+                           <th> Status </th>
+                           <th> Action </th>
+                        </tr>
+
+                        <tr>
+                           <td> 1 </td>
+                           <td> 220002 </td>
+                           <td> Mark Melvin Bacabis </td>
+                           <td> BSIT </td>
+                           <td> 2022-05-18 4:20 PM</td>
+                           <td> Pending... </td>
+                           <td> <a href="#"> see details </a></td>
+                        </tr>
+                       
+                      
+                     </table>
+                  </div>
+
+                  <div class="announcement-modal" id="announcement-modal">
+                     <div class="announcement-form">
+                        <div class="close">
+                           +
+                        </div>
+                        <!-- <h1> Add Admin Assistant </h1> -->
+                        <div class="announcement-info">
+                           <div class="announcement-title">
+                              <h1> Title: Sample title </h1>
+                           </div>
+                           <div class="announcement-desc">
+                              <h3> Description </h3>
+                              <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta provident quam nobis. Ad repellat tenetur inventore excepturi nulla? Eum quas itaque sit officia incidunt ratione voluptatibus est blanditiis mollitia aperiam? Explicabo architecto nam sapiente impedit voluptate enim rem. Velit, doloribus. </p>
+                           </div>
+                           <div class="announcement-link">
+                              <p> Url: <a href="#"> www.url.com </a> </p>
+                              
+                           </div>
+                        </div>
+
+
+                        <div class="form-button">
+                           <button id="cancel"> Decline </button>
+                           <button id="add"> Approve </button>
+                        </div>
+                     </div>
+                  </div>
+
+               </div>
+            <!-- xx REQUEST -->
+
+            <!-- APPROVAL HISTORY -->
+               <div class="request-container container">
+                  <div class="title-header">
+                     <h2> </h2>
+                     <hr>
+                  </div>         
+                  
+                  <div class="request">
+                     <div class="result">
+                        <p> Result: 3 </p>
+                     </div>
+                  
+                     <table border="0">
+                        <tr>
+                           
+                           <th> emp id </th>
+                           <th> Fullname </th>
+                           <th> Announcement </th>
+                           <th> Dept </th>
+                           <th> Date </th>
+                           <th> Status </th>
+                        </tr>
+
+                        <tr>
+                         
+                           <td> 220002 </td>
+                           <td> Mark Melvin Bacabis </td>
+                           <td> <span style="font-size: .8em;"> Lorem ipsum dolor sit amet... </span></td>
+                           <td> BSIT </td>
+                           <td> <span style="font-size: .8em;"> 2022-05-18 4:20 PM </span></td>
+                           <td> Approved </td>
+                          
+                        </tr>
+                     
+                     </table>
+                  </div>
+               </div>
+            <!-- xx APPROVAL HISTORY-->
          </div>
       </section>
 
@@ -277,16 +432,31 @@
 </body>
 <script>
    var page = document.querySelectorAll('.page-title');
-   var pageContent = document.querySelectorAll('.page-container');
-   console.log(page[0].style.background);
-   console.log(pageContent[0].style.height);
+   var pageContainer = document.querySelectorAll('.page-container');
 
+      for(let j = 0; j < page.length; j++){
+         page[j].addEventListener('click', function() {
+            for(let i = 0; i < page.length; i++){
+               if(i == j){
+                  if(pageContainer[j].style.height === 'max-content'){
+                     pageContainer[j].style.height = '40px';
+                  }
+                  else{
+                     pageContainer[j].style.height = "max-content";
+                  }
+               }
+               else{
+                  pageContainer[i].style.height = "40px";
+               }
 
+               
+            }
+            
+         });
+      }
+      
 
-   page[0].addEventListener('click', ()=>{
-      // pageContent[0].height = 'max-content';
-      // console.log(pageContent[0].clientHeight = '400px');
-   })
+  
 
 
 </script>
