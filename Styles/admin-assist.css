@@ -238,7 +238,7 @@ section.center-information .center-header p span:first-child{
 
 /* OVERVIEW */
 .center-content .overview-container{
-   display: none;
+   display: flex;
    flex-direction: column;
 }
 .center-content .overview-container .overview{
@@ -530,7 +530,7 @@ section.center-information .center-header p span:first-child{
 
 /* MAINTENANCE */
 .maintenance-container{
-   display: flex;
+   display: none;
    flex-direction: column;
 }
 
@@ -614,8 +614,41 @@ section.center-information .center-header p span:first-child{
    padding: 1px;
    letter-spacing: 1px;
    font-size: 1em;
+   border: none;
    height: 100%;
 }
+
+
+
+.executive-content .form-input table{
+   width: 100%;  
+   margin-bottom: 20px;
+}
+.executive-content .form-input table tr td{
+   width: 200px;
+}
+.executive-content .form-input table tr td:last-child{
+   width: max-content;
+}
+.executive-content .form-input table tr td input{
+   width: 100%;
+}
+
+.executive-content .form-input table tr td button{
+   background-color: #e2e2e2;
+   color: rgb(0, 0, 0);
+   outline: none;
+   border-radius: 5px;
+   width: 70px;
+   padding: 1px;
+   letter-spacing: 1px;
+   font-size: 1em;
+   border: none;
+   height: 100%;
+}
+
+
+
 
 
 

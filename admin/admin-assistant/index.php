@@ -255,11 +255,25 @@
                            <h1> Executive Officials </h1>
                            <img src="../../icon/down-filled-triangular-arrow.png" alt="">
                         </div>
-                        <div class="history-content page-content">
+
+                        <div class="executive-content page-content">
                            <div class="content">
                            
                               <div class="form-input">
-                                 
+                                 <table border="0">
+                                    <tr>
+                                       <th> Fullname </th>
+                                       <th> Position </th>
+                                       <th> Image </th>
+                                       <th> </th>
+                                    </tr>
+                                    <tr>
+                                       <td> <input type="text" name="fullname[]" id="fullname"> </td>
+                                       <td> <input type="text" name="position[]" id="position"> </td>
+                                       <td> <input type="file" name="Image[]" id="image"> </td>
+                                       <td> <button> Add </button> </td>
+                                    </tr>
+                                 </table>
                               </div>
 
 

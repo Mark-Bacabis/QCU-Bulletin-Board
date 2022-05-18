@@ -169,6 +169,7 @@
                            <th> Fullname </th>
                            <th> Email </th>
                            <th> Contact </th>
+                           <th> Action </th>
                         </tr>
 
                         <tr>
@@ -177,20 +178,7 @@
                            <td> Mark Melvin Bacabis </td>
                            <td> mark.melvin.bacabis@gmail.com </td>
                            <td> 09987654321 </td>
-                        </tr>
-                        <tr>
-                           <td> 2 </td>
-                           <td> 220002 </td>
-                           <td> Mark Melvin Bacabis </td>
-                           <td> mark.melvin.bacabis@gmail.com </td>
-                           <td> 09987654321 </td>
-                        </tr>
-                        <tr>
-                           <td> 3 </td>
-                           <td> 220002 </td>
-                           <td> Mark Melvin Bacabis </td>
-                           <td> mark.melvin.bacabis@gmail.com </td>
-                           <td> 09987654321 </td>
+                           <td> Del </td>
                         </tr>
                       
                      </table>
@@ -230,11 +218,79 @@
             <!-- xxx ADMIN ASSISTANT -->
 
             <!-- HEAD DEPT -->
-               <div class="head-dept-container container">
+            <div class="head-container container">
                   <div class="title-header">
-                     <h2> Departments Head  </h2>
+                     <h2> Head Department </h2>
                      <hr>
-                  </div>               
+                  </div>
+                   
+                  
+                  <div class="heads">
+                     <div class="add-head">
+                        <button> 
+                           <div class="icon">
+                              +
+                           </div>
+                           <p> Add head dept </p>
+                        </button>
+                        <div class="result">
+                           <p> Result: 3 </p>
+                        </div>
+                       
+                     </div>
+                     
+                     <table border="0">
+                        <tr>
+                           <th> id </th>
+                           <th> emp id </th>
+                           <th> Fullname </th>
+                           <th> Email </th>
+                           <th> Contact </th>
+                           <th> Action </th>
+                        </tr>
+
+                        <tr>
+                           <td> 1 </td>
+                           <td> 220002 </td>
+                           <td> Mark Melvin Bacabis </td>
+                           <td> mark.melvin.bacabis@gmail.com </td>
+                           <td> 09987654321 </td>
+                           <td> Del </td>
+                        </tr>
+                      
+                     </table>
+                  </div>
+
+                  <div class="head-modal" id="head-modal">
+                     <div class="head-form">
+                        <h1> Add Head </h1>
+                        <div class="form-input">
+                           <label for="fname"> Firstname </label>
+                           <input type="text" name="fname" id="fname">
+                        </div>
+
+                        <div class="form-input">
+                           <label for="lname"> Lastname </label>
+                           <input type="text" name="lname" id="lname">
+                        </div>
+
+                        <div class="form-input">
+                           <label for="email"> Email </label>
+                           <input type="email" name="email" id="email">
+                        </div>
+
+                        <div class="form-input">
+                           <label for="cNum"> Contact number </label>
+                           <input type="email" name="cNum" id="cNum">
+                        </div>
+
+                        <div class="form-button">
+                           <button id="cancel"> Cancel </button>
+                           <button id="add"> Add </button>
+                        </div>
+                     </div>
+                  </div>
+
                </div>
             <!-- xxx HEAD DEPT  -->
 
