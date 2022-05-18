@@ -437,6 +437,11 @@ section.center-information .center-header p span:first-child{
    font-size: .9rem;
 }
 
+.admin-assist-container .assistant-modal .assistant-form .form-input label span{
+   color: red;
+   font-size: .9em;
+}
+
 .admin-assist-container .assistant-modal .assistant-form .form-input input{
    outline: none;
    font-size: 1rem;
@@ -464,7 +469,7 @@ section.center-information .center-header p span:first-child{
    transition: all linear .3s;
 }
 
-.admin-assist-container .assistant-modal .assistant-form .form-button button#add{
+.admin-assist-container .assistant-modal .assistant-form .form-button button#assistant-add{
    background-color: rgb(79, 182, 101);
    color: #fff;
 }

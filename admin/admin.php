@@ -1,10 +1,17 @@
 <?php
    error_reporting(0);
    session_start();
+
+   
+   include "../include/db_connection.php";
+   include "../process/function.php";
+   include "../process/select.php";
+   
    $empID = $_SESSION['empID'];
    if(empty($empID)){
      // header("location:./index.php");
    }
+   
 ?>
 
 <!DOCTYPE html>
@@ -16,8 +23,6 @@
    <link rel="stylesheet" href="../Styles/admin.css">
    <link rel="stylesheet" href="../Styles/calendar.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/> <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" /> 
-
-
    <title> QCU Bulletin Board Dashboard </title>
 </head>
 
@@ -27,7 +32,8 @@
 <!-- CHART JS -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-
+<!-- AJAXS -->
+<script src="../ajax/add-assistant.js"></script>
 
 <body>
    <main>
@@ -150,7 +156,7 @@
                   
                   <div class="assistants">
                      <div class="add-assistant">
-                        <button> 
+                        <button id="addAssistant"> 
                            <div class="icon">
                               +
                            </div>
@@ -171,15 +177,26 @@
                            <th> Contact </th>
                            <th> Action </th>
                         </tr>
+                     <?php
+                        if(mysqli_num_rows($selAssistant) > 0){
+                           while($rows = mysqli_fetch_array($selAssistant)){ ?>
+                           <tr>
+                              <td> <?=$rows['id']?> </td>
+                              <td> <?=$rows['empID']?></td>
+                              <td> <?=$rows['fullname']?></td>
+                              <td> <?=$rows['email']?> </td>
+                              <td> <?=$rows['contact']?> </td>
+                              <td> Del </td>
+                           </tr>
 
-                        <tr>
-                           <td> 1 </td>
-                           <td> 220002 </td>
-                           <td> Mark Melvin Bacabis </td>
-                           <td> mark.melvin.bacabis@gmail.com </td>
-                           <td> 09987654321 </td>
-                           <td> Del </td>
-                        </tr>
+                        <?php  }
+                        } else { ?>
+                           <tr>
+                              <td colspan="6"> No Applicants Yet. </td>
+                           </tr>
+                        <?php }
+                     ?>
+                        
                       
                      </table>
                   </div>
@@ -187,29 +204,29 @@
                   <div class="assistant-modal" id="assistant-modal">
                      <div class="assistant-form">
                         <h1> Add Admin Assistant </h1>
-                        <div class="form-input">
-                           <label for="fname"> Firstname </label>
+                        <div class="form-input fname">
+                           <label for="fname"> Firstname <span class="errMessage"> </span></label>
                            <input type="text" name="fname" id="fname">
                         </div>
 
-                        <div class="form-input">
-                           <label for="lname"> Lastname </label>
+                        <div class="form-input lname">
+                           <label for="lname"> Lastname <span class="errMessage"> </span></label>
                            <input type="text" name="lname" id="lname">
                         </div>
 
-                        <div class="form-input">
-                           <label for="email"> Email </label>
+                        <div class="form-input email">
+                           <label for="email"> Email <span class="errMessage"> </span></label>
                            <input type="email" name="email" id="email">
                         </div>
 
-                        <div class="form-input">
-                           <label for="cNum"> Contact number </label>
+                        <div class="form-input cNum" >
+                           <label for="cNum"> Contact number <span class="errMessage"> </span></label>
                            <input type="email" name="cNum" id="cNum">
                         </div>
 
                         <div class="form-button">
-                           <button id="cancel"> Cancel </button>
-                           <button id="add"> Add </button>
+                           <button id="assistant-cancel"> Cancel </button>
+                           <button id="assistant-add"> Add </button>
                         </div>
                      </div>
                   </div>
