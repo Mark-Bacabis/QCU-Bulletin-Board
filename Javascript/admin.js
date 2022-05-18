@@ -5,9 +5,13 @@ var navLinks = document.querySelectorAll('.nav-link');
 var assistantButton = document.getElementById('addAssistant');
 var assistantCancel = document.getElementById('assistant-cancel');
 
+var headButton = document.getElementById('addHead');
+var headCancel = document.getElementById('head-cancel');
+
 // CONTAINERS 
 var containers = document.querySelectorAll('.container');
 var assistantsModal = document.getElementById('assistant-modal');
+var headModal = document.getElementById('head-modal');
 
 
 navLinks[0].addEventListener('click', ()=>{
@@ -95,4 +99,11 @@ assistantCancel.addEventListener('click', ()=>{
    assistantsModal.style.display = 'none';
 });
 
+
+headButton.addEventListener('click', ()=>{
+   headModal.style.display = 'flex';
+});
+headCancel.addEventListener('click', ()=>{
+   headModal.style.display = 'none';
+});
 

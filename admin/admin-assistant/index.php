@@ -1,4 +1,25 @@
+<?php
+  //error_reporting(0);
+   session_start();
 
+   
+   include "../../include/db_connection.php";
+   include "../../process/function.php";
+   include "../../process/select.php";
+   include "../../process/count.php";
+
+   $empID = $_SESSION['empID'];
+   
+   // SELECT SUPER ADMIN WHERE...
+   $selAdmin = "SELECT * FROM `users` WHERE `position` = 'admin' AND `empID` = $empID";
+   $selectedAdmin = mysqli_query($con, $selAdmin);
+   $admin = mysqli_fetch_assoc($selectedAdmin);
+   
+   if(empty($empID)){
+      header("location:./index.php");
+   }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,7 +111,7 @@
                            </div>
                            <div class="summary-info">
                               <h1 class="total"> 42 </h1>
-                              <p class="summary-title"> Students </p>
+                              <p class="summary-title"> Pending Request</p>
                            </div>
                         </div>
 
@@ -100,7 +121,7 @@
                            </div>
                            <div class="summary-info">
                               <h1 class="total"> 42 </h1>
-                              <p class="summary-title"> Students </p>
+                              <p class="summary-title"> Announcements </p>
                            </div>
                         </div>
 
@@ -110,7 +131,7 @@
                            </div>
                            <div class="summary-info">
                               <h1 class="total"> 42 </h1>
-                              <p class="summary-title"> Students </p>
+                              <p class="summary-title"> Events </p>
                            </div>
                         </div>
                      </div>
@@ -121,14 +142,23 @@
                      <h2> Announcement </h2>
                      <hr>
                   </div>
-
                   <div class="announcement-box">
-                     <div class="announcement">
-                        <h1 class="title"> Cute si iska <span> 2022-05-18 1:27 PM </span></h1>
-                        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur nam debitis maiores repudiandae voluptas nulla voluptatibus doloremque error optio neque.</p>
-                     </div>
-                     
-                  </div>
+                  <?php
+                     if(mysqli_num_rows($selAnnounceQ) > 0){
+                        while($rows = mysqli_fetch_assoc($selAnnounceQ)){ ?>
+                          
+                              <div class="announcement">
+                                 <h1 class="title"> Cute si iska <span> 2022-05-18 1:27 PM </span></h1>
+                                 <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur nam debitis maiores repudiandae voluptas nulla voluptatibus doloremque error optio neque.</p>
+                              </div>
+                              
+                          
+                     <?php   }
+                     } else{
+                        echo "No announcement yet.";
+                     }
+                  ?>
+                   </div>
                </div>
             </div>
             <!-- xx OVERVIEW -->
@@ -405,10 +435,10 @@
          <div class="right-header">
             <div class="icon-profile">
                <div class="profile-img">
-                  <img src="../admin-profile/profile.png">
+                  <img src="../admin-profile/<?=$admin['avatar']?>">
                </div>
                
-               <h3> Mark </h3>
+               <h3> <?=$admin['fullname']?></h3>
             </div>
 
             <div class="icon-setting">

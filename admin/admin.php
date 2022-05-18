@@ -1,16 +1,20 @@
 <?php
    error_reporting(0);
    session_start();
-
+   
    
    include "../include/db_connection.php";
    include "../process/function.php";
    include "../process/select.php";
-   
+   include "../process/count.php";
+
    $empID = $_SESSION['empID'];
-   if(empty($empID)){
-     // header("location:./index.php");
-   }
+
+   // SELECT SUPER ADMIN WHERE...
+   $selAdmin = "SELECT * FROM `users` WHERE `position` = 'main admin' AND `empID` = $empID";
+   $selectedAdmin = mysqli_query($con, $selAdmin);
+   $superAdmin = mysqli_fetch_assoc($selectedAdmin);
+  
    
 ?>
 
@@ -34,7 +38,9 @@
 
 <!-- AJAXS -->
 <script src="../ajax/add-assistant.js"></script>
-
+<script src="../ajax/del-assistant.js"></script>
+<script src="../ajax/add-faculty.js"></script>
+<script src="../ajax/del-faculty.js"></script>
 <body>
    <main>
 
@@ -55,20 +61,20 @@
                <h1> Dashboard </h1>
             </div>
             <div class="nav-link" >
-            <img src="../icon/loudspeaker.png" alt="">
+            <img src="../icon/management.png" alt="">
                <h1> Admin Assistants </h1>
             </div>
             <div class="nav-link" >
-            <img src="../icon/loudspeaker.png" alt="">
+            <img src="../icon/hierarchy.png" alt="">
                <h1> Departments Head </h1>
             </div>
             <div class="nav-link" >
-            <img src="../icon/loudspeaker.png" alt="">
+            <img src="../icon/student-with-graduation-cap.png" alt="">
                <h1> Students </h1>
             </div>
 
             <div class="nav-link" >
-            <img src="../icon/loudspeaker.png" alt="">
+            <img src="../icon/restore.png" alt="">
                <h1> Activity log </h1>
             </div>
             
@@ -104,30 +110,30 @@
                      <div class="summary-container">
                         <div class="summary-box students">
                            <div class="icon">
-                              <img src="../icon/student-with-graduation-cap.png" alt="">
+                              <img src="../icon/management.png" alt="">
                            </div>
                            <div class="summary-info">
-                              <h1 class="total"> 42 </h1>
-                              <p class="summary-title"> Students </p>
+                              <h1 class="total"> <?=$adminCnt['total']?> </h1>
+                              <p class="summary-title"> Admin Assistants </p>
                            </div>
                         </div>
 
                         <div class="summary-box dept-head">
                            <div class="icon">
-
+                              <img src="../icon/hierarchy.png" alt="">
                            </div>
                            <div class="summary-info">
-                              <h1 class="total"> 42 </h1>
-                              <p class="summary-title"> Students </p>
+                              <h1 class="total"> <?=$facultyCnt['total']?> </h1>
+                              <p class="summary-title">  Head Department</p>
                            </div>
                         </div>
 
                         <div class="summary-box admin-assist">
                            <div class="icon">
-
+                              <img src="../icon/student-with-graduation-cap.png" alt="">
                            </div>
                            <div class="summary-info">
-                              <h1 class="total"> 42 </h1>
+                              <h1 class="total"> <?=$studCnt['total']?> </h1>
                               <p class="summary-title"> Students </p>
                            </div>
                         </div>
@@ -162,31 +168,30 @@
                            </div>
                            <p> Add new assistant </p>
                         </button>
-                        <div class="result">
-                           <p> Result: 3 </p>
+                        <div class="assistant-result">
+                           <p> Result: <?=$adminCnt['total']?> </p>
                         </div>
-                       
                      </div>
                      
                      <table border="0">
                         <tr>
-                           <th> id </th>
+                           
                            <th> emp id </th>
                            <th> Fullname </th>
                            <th> Email </th>
                            <th> Contact </th>
                            <th> Action </th>
                         </tr>
-                     <?php
+                        <?php
                         if(mysqli_num_rows($selAssistant) > 0){
                            while($rows = mysqli_fetch_array($selAssistant)){ ?>
                            <tr>
-                              <td> <?=$rows['id']?> </td>
+                              
                               <td> <?=$rows['empID']?></td>
                               <td> <?=$rows['fullname']?></td>
                               <td> <?=$rows['email']?> </td>
                               <td> <?=$rows['contact']?> </td>
-                              <td> Del </td>
+                              <td> <button data-role="Delete" data-id="<?=$rows['empID']?>"> Del </button> </td>
                            </tr>
 
                         <?php  }
@@ -195,10 +200,22 @@
                               <td colspan="6"> No Applicants Yet. </td>
                            </tr>
                         <?php }
-                     ?>
-                        
-                      
+                        ?>
                      </table>
+
+                     <div class="update-box">
+                     
+                     </div>
+                  </div>
+
+                  <div class="del-modal" id="del-modal">
+                     <p> Are you sure you want to delete this employee? </p>
+                     <h2 class="emp-id"></h2>
+                     <div class="form-button">
+                        <button id="del-no"> No </button>
+                        <button id="del-yes"> Yes </button>
+                       
+                     </div>
                   </div>
 
                   <div class="assistant-modal" id="assistant-modal">
@@ -235,7 +252,7 @@
             <!-- xxx ADMIN ASSISTANT -->
 
             <!-- HEAD DEPT -->
-            <div class="head-container container">
+               <div class="head-container container">
                   <div class="title-header">
                      <h2> Head Department </h2>
                      <hr>
@@ -244,38 +261,60 @@
                   
                   <div class="heads">
                      <div class="add-head">
-                        <button> 
+                        <button id="addHead"> 
                            <div class="icon">
                               +
                            </div>
-                           <p> Add head dept </p>
+                           <p> Add Faculty Head  </p>
                         </button>
-                        <div class="result">
-                           <p> Result: 3 </p>
+                        <div class="head-result">
+                           <p> Result: <?=$facultyCnt['total']?> </p>
                         </div>
-                       
                      </div>
-                     
                      <table border="0">
                         <tr>
-                           <th> id </th>
+                          
                            <th> emp id </th>
                            <th> Fullname </th>
                            <th> Email </th>
-                           <th> Contact </th>
+                           <th> Dept </th>
                            <th> Action </th>
                         </tr>
+                        <?php
+                        if(mysqli_num_rows($selFaculty) > 0){
+                           while($rows = mysqli_fetch_array($selFaculty)){ ?>
+                           <tr>
+                            
+                              <td> <?=$rows['empID']?></td>
+                              <td> <?=$rows['fullname']?></td>
+                              <td> <?=$rows['email']?> </td>
+                              <td> <?=$rows['Dept']?> </td>
+                              <td> <button data-role="Delete-head" data-id="<?=$rows['empID']?>"> Del </button> </td>
+                           </tr>
 
-                        <tr>
-                           <td> 1 </td>
-                           <td> 220002 </td>
-                           <td> Mark Melvin Bacabis </td>
-                           <td> mark.melvin.bacabis@gmail.com </td>
-                           <td> 09987654321 </td>
-                           <td> Del </td>
-                        </tr>
-                      
+                        <?php  }
+                        } else { ?>
+                           <tr>
+                              <td colspan="6"> No Applicants Yet. </td>
+                           </tr>
+                        <?php }
+                        ?>
                      </table>
+
+                     <div class="update-box-box">
+                     
+                     </div>
+                  </div>
+
+
+                  <div class="del-modal" id="del-modal-head">
+                     <p> Are you sure you want to delete this employee? </p>
+                     <h2 class="emp-id"></h2>
+                     <div class="form-button">
+                        <button id="del-no-head"> No </button>
+                        <button id="del-yes-head"> Yes </button>
+                       
+                     </div>
                   </div>
 
                   <div class="head-modal" id="head-modal">
@@ -283,27 +322,33 @@
                         <h1> Add Head </h1>
                         <div class="form-input">
                            <label for="fname"> Firstname </label>
-                           <input type="text" name="fname" id="fname">
+                           <input type="text" name="fname" id="head-fname">
                         </div>
 
                         <div class="form-input">
                            <label for="lname"> Lastname </label>
-                           <input type="text" name="lname" id="lname">
+                           <input type="text" name="lname" id="head-lname">
                         </div>
 
                         <div class="form-input">
                            <label for="email"> Email </label>
-                           <input type="email" name="email" id="email">
+                           <input type="email" name="email" id="head-email">
                         </div>
 
                         <div class="form-input">
-                           <label for="cNum"> Contact number </label>
-                           <input type="email" name="cNum" id="cNum">
+                           <label for="dept"> Department </label>
+                           <select name="dept" id="head-dept">
+                              <option value="BSIT"> BSIT </option>
+                              <option value="BSIE"> BSIE </option>
+                              <option value="BSA"> BSA </option>
+                              <option value="BSECE"> BSECE </option>
+                              <option value="BSENT"> BSENT </option>
+                           </select>
                         </div>
 
                         <div class="form-button">
-                           <button id="cancel"> Cancel </button>
-                           <button id="add"> Add </button>
+                           <button id="head-cancel"> Cancel </button>
+                           <button id="head-add"> Add </button>
                         </div>
                      </div>
                   </div>
@@ -321,7 +366,7 @@
                      
                      <div class="search">
                         <div class="result">
-                           <p> Result: 6 </p>
+                           <p> Result: <?=$studCnt['total']?> </p>
                         </div>
                         <div class="search-select">
                            <select name="course" id="course">
@@ -338,43 +383,33 @@
                      <div class="students-table"> 
                         <table border="0">
                            <tr>
-                              <th> id </th>
+                             
                               <th> stud id </th>
                               <th> Fullname </th>
                               <th> Email </th>
                               <th> Course </th>
-                              <th> YL</th>
+                              <!-- <th> YL</th> -->
                            
                         
                            </tr>
+                           <?php
+                        if(mysqli_num_rows($selectedStud) > 0){
+                           while($rows = mysqli_fetch_array($selectedStud)){ ?>
+                           <tr>
+                            
+                              <td> <?=$rows['studentId']?></td>
+                              <td> <?=$rows['StudentName']?></td>
+                              <td> <?=$rows['course']?> </td>
+                              <!-- <td> <?=$rows['Dept']?> </td> -->
+                           </tr>
 
+                        <?php  }
+                        } else { ?>
                            <tr>
-                              <td> 1 </td>
-                              <td> 220002 </td>
-                              <td> Mark Melvin Bacabis </td>
-                              <td> mark.melvin.bacabis@gmail.com </td>
-                              <td> BSIT </td>
-                              <td> 1st </td>
-                              
+                              <td colspan="6"> No Applicants Yet. </td>
                            </tr>
-                           <tr>
-                              <td> 2 </td>
-                              <td> 220002 </td>
-                              <td> Mark Melvin Bacabis </td>
-                              <td> mark.melvin.bacabis@gmail.com </td>
-                              <td> BSIT </td>
-                              <td> 1st </td>
-                           
-                           </tr>
-                           <tr>
-                              <td> 3 </td>
-                              <td> 220002 </td>
-                              <td> Mark Melvin Bacabis </td>
-                              <td> mark.melvin.bacabis@gmail.com </td>
-                              <td> BSIT </td>
-                              <td> 1st </td>
-                           
-                           </tr>
+                        <?php }
+                        ?>
                         
                         </table>
                      </div>
@@ -388,25 +423,25 @@
                      <h2> Activity Log </h2>
                      <hr>
                   </div>
-                  <div class="date-act">
-                     <div></div>
-                     <div class="form-input">
-                        <label for="date"> Date </label>
-                        <input type="date" name="date" id="date">
-                        <input type="time" name="time" id="time">
-                     </div>
-                  </div>
+                 
                   <table border="0">
                      <tr>
                         <th> id </th>
                         <th> activity </th>
                         <th> date and time </th>
                      </tr>
-                     <tr>
-                        <td> 1 </td>
-                        <td> Mark bacabis approved John doe's announcment. </td>
-                        <td> 2022-05-18 3:30AM </td>
-                     </tr>
+                     <?php
+                        if(mysqli_num_rows($selLogQ) > 0){
+                           while($log = mysqli_fetch_assoc($selLogQ)){?>
+                              <tr>
+                                 <td> <?=$log['id']?></td>
+                                 <td> <?=$log['fullname']?> <?=$log['activity']?> </td>
+                                 <td> <?=$log['date']?> <?=$log['time']?></td>
+                              </tr>
+                      <?php  }
+                        }
+                     ?>
+                   
                   
                   </table>
                   
@@ -420,13 +455,13 @@
          <div class="right-header">
             <div class="icon-profile">
                <div class="profile-img">
-                  <img src="admin-profile/profile.png">
+                  <img src="admin-profile/<?=$superAdmin['avatar']?>">
                </div>
-               <h3> Jessica </h3>
+               <h3> <?=$superAdmin['fullname']?> </h3>
             </div>
 
             <div class="icon-setting">
-               <a href="#">
+               <a href="./logout.php">
                   <img src="../icon/power-off.png" alt="">
                </a> 
             </div>
@@ -465,13 +500,17 @@
 <script>
    const data = {
       labels: [
-         'Red',
-         'Blue',
-         'Yellow'
+         'Admin Assistants',
+         'Head Department',
+         'Students'
       ],
       datasets: [{
          label: 'My First Dataset',
-         data: [300, 50, 100],
+         data: [
+            <?=$adminCnt['total']?> ,
+            <?=$facultyCnt['total']?>,
+            <?=$studCnt['total']?> 
+         ],
          backgroundColor: [
             'rgb(255, 99, 132)',
             'rgb(54, 162, 235)',

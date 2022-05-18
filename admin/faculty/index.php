@@ -1,3 +1,12 @@
+<?php
+   session_start();
+   session_destroy();
+   session_unset();
+
+   $position = $_SESSION['position'];
+   $empID = $_SESSION['empID'];
+   // echo $empID;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

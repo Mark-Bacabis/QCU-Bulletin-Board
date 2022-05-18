@@ -289,7 +289,7 @@ section.center-information .center-header p span:first-child{
 }
 
 .center-content .overview-container .overview .summary-container .summary-box .summary-info{
-   text-align: center;
+   text-align: right;
    color: #fff;
 }
 
@@ -298,7 +298,7 @@ section.center-information .center-header p span:first-child{
 }
 
 .center-content .overview-container .overview .summary-container .summary-box .summary-info p{
-   font-size: 1.1em;
+   font-size: 1em;
 }
 
 

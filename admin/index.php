@@ -1,4 +1,26 @@
+<?php
+   error_reporting(0);
+   session_start();
 
+   $position = $_SESSION['position'];
+   $empID = $_SESSION['empID'];
+
+   
+
+   if(!empty($empID)){
+      if($position == 'admin'){
+         header("location: ./admin-assistant/index.php");
+      }
+      if($position == 'faculty'){
+         header("location: ./faculty/index.php");
+      }
+      if($position == 'main admin'){
+         header("location: ./admin.php");
+      }
+   }
+  
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,4 +59,5 @@
    </main>
 
 </body>
+
 </html>

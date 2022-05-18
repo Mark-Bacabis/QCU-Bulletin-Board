@@ -274,8 +274,8 @@ section.center-information .center-header p span:first-child{
 
 
 .center-content .dashboard-container .overview .summary-container .summary-box .icon {
-   width: 80px;
-   height: 80px;
+   width: 60px;
+   height: 60px;
 }
 
 .center-content .dashboard-container .overview .summary-container .summary-box .icon img{
@@ -285,7 +285,7 @@ section.center-information .center-header p span:first-child{
 }
 
 .center-content .dashboard-container .overview .summary-container .summary-box .summary-info{
-   text-align: center;
+   text-align: right;
    color: #fff;
 }
 
@@ -294,7 +294,7 @@ section.center-information .center-header p span:first-child{
 }
 
 .center-content .dashboard-container .overview .summary-container .summary-box .summary-info p{
-   font-size: 1.1em;
+   font-size: 1em;
 }
 
 
@@ -480,6 +480,67 @@ section.center-information .center-header p span:first-child{
 
 
 
+.del-modal{
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   background-color: #fff;
+   border-radius: 6px;
+   box-shadow: 0 7px 13px 0 rgba(0, 0, 0, 0.13);
+   width: 70%;
+   height: 30%;
+   display: none;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+.del-modal .form-button {
+   margin-top: 10px;
+}
+
+.del-modal .form-button button{
+   border: none;
+   border-radius: 5px;
+   font-size: 1em;
+   color: #fff;
+   width: 70px;
+   padding: 2px;
+   margin: 0 10px;
+   background-color: rgb(197, 71, 71);
+   cursor: pointer;
+}
+
+.del-modal .form-button button#del-yes{
+   background-color: rgb(71, 197, 98);
+}
+
+.del-modal .form-button button#del-yes-head{
+   background-color: rgb(71, 197, 98);
+}
+
+
+.update-box{
+   position: absolute;
+   bottom: 7%;
+   left: 4%;
+   background-color: #fff;
+   /* box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.13); */
+   width: max-content;
+   height: max-content;
+   background-color: rgb(81, 209, 130);
+   border-radius: 4px;
+   opacity: 0;
+   transition: opacity linear .3s;
+}
+
+.update-box p{
+   font-size: 1em;
+   padding: 7px 15px;
+   color: rgb(255, 255, 255);
+
+}
 
 
 

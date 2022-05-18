@@ -1,47 +1,45 @@
 <?php
    include "../include/db_connection.php";
-   // $con = mysqli_connect('localhost', 'root', '', 'php-login-qcu-bulletin');
+  
    include "./function.php";
 
-   $fullname = $_POST['fname']." ".$_POST['lname'];
-   $email = $_POST['email'];
-   $contact =  $_POST['cNum'];   
-
-   addAssistant($fullname, $email, $contact);
-
+   $empID = $_POST['empID'];
+   DelHead($empID);
+  
    include "./select.php";
-   
+  
 
 ?>
- <tr>
-                          
+<tr>
+                           <th> id </th>
                            <th> emp id </th>
                            <th> Fullname </th>
                            <th> Email </th>
-                           <th> Contact </th>
+                           <th> Dept </th>
                            <th> Action </th>
                         </tr>
- <?php
-                        if(mysqli_num_rows($selAssistant) > 0){
-                           while($rows = mysqli_fetch_array($selAssistant)){ ?>
+                        <?php
+                        if(mysqli_num_rows($selFaculty) > 0){
+                           while($rows = mysqli_fetch_array($selFaculty)){ ?>
                            <tr>
-                              
+                              <td> <?=$rows['id']?> </td>
                               <td> <?=$rows['empID']?></td>
                               <td> <?=$rows['fullname']?></td>
                               <td> <?=$rows['email']?> </td>
-                              <td> <?=$rows['contact']?> </td>
+                              <td> <?=$rows['Dept']?> </td>
                               <td> <button data-role="Delete" data-id="<?=$rows['empID']?>"> Del </button> </td>
                            </tr>
 
                         <?php  }
                         } else { ?>
                            <tr>
-                              <td colspan="6"> No Applicants Yet. </td>
+                              <td colspan="6"> No Faculty Yet. </td>
                            </tr>
                         <?php }
                         ?>
+
                       
-<script> 
-assistantsModal.style.display = 'none'; 
-document.querySelector('.update-box').style.opacity = '1';
+<script>  
+document.getElementById('del-modal-head').style.display = 'none';
+document.querySelector('.update-box-head').style.opacity = '1';
 </script>

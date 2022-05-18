@@ -10,7 +10,7 @@ function addAssistant($fullname, $email, $contact) {
 
    $pass = substr(str_shuffle('1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'), 0, 16);
 
-   $cnt = mysqli_query($con, "SELECT COUNT(id) as total FROM `users`");
+   $cnt = mysqli_query($con, "SELECT MAX(id) as total FROM `users`");
    $count = mysqli_fetch_assoc($cnt);
    $empID = 220000 + ($count['total'] + 1);
 
@@ -21,6 +21,59 @@ function addAssistant($fullname, $email, $contact) {
    mysqli_query($con, $addAcc);
 
    sendEmail($empID);
+}
+
+function AddFaculty($fullname, $email, $dept){
+   include "../include/db_connection.php";
+   $pass = substr(str_shuffle('1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'), 0, 16);
+
+   $cnt = mysqli_query($con, "SELECT MAX(id) as total FROM `users`");
+   $count = mysqli_fetch_assoc($cnt);
+   $empID = 220000 + ($count['total'] + 1);
+
+   $add = "INSERT INTO `users`(`empID`, `fullname`, `email`, `contact`, `position`, `avatar`) VALUES ($empID ,'$fullname','$email','','faculty','default.jpg')";
+   mysqli_query($con, $add);
+
+   $addAcc = "INSERT INTO `users_account`(`empID`, `password`) VALUES ($empID,'$pass')";
+   mysqli_query($con, $addAcc);
+
+   $addDept = "INSERT INTO `faculty_dept`(`empID`, `Dept`) VALUES ('$empID','$dept')";
+   mysqli_query($con, $addDept);
+
+   sendEmail($empID);
+}
+
+
+function DelAssistant($empID){
+   include "../include/db_connection.php";
+   
+   $del = "DELETE FROM `users` WHERE `empID` = $empID AND `position` = 'admin'";
+   $delAcc = "DELETE FROM `users_account` WHERE `empID` = $empID";
+
+   mysqli_query($con, $del);
+   mysqli_query($con, $delAcc);
+}
+
+
+function DelHead($empID){
+   include "../include/db_connection.php";
+   
+   $del = "DELETE FROM `users` WHERE `empID` = $empID AND `position` = 'faculty'";
+   $delAcc = "DELETE FROM `users_account` WHERE `empID` = $empID";
+   $delDept = "DELETE FROM `faculty_dept` WHERE `empID` = $empID";
+
+   mysqli_query($con, $del);
+   mysqli_query($con, $delAcc);
+   mysqli_query($con, $delDept);
+}
+
+
+function actLog($schoolID, $activity, $date, $time){
+   include "../include/db_connection.php";
+
+   $ins = "INSERT INTO `activity_log`(`schoolID`, `activity`, `date`, `time`) VALUES ('$schoolID','$activity', '$date', '$time')";
+   mysqli_query($con, $ins);
+
 }
 
 function sendEmail($empID) {

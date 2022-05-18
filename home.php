@@ -1,7 +1,7 @@
 <?php 
   error_reporting(1);
   //require('./session.php');
-  require('./database.php');
+  require('./include/db_connection.php');
 
   // if (isset($_POST["edit"])) {
   //   $editId = $_POST['editId'];

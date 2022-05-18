@@ -35,6 +35,12 @@ $(document).ready(function(){
             email: email,
             cNum: cNum
          });
+         $(".update-box").load("../process/add-update.php",{
+         
+         });
+         $(".assistant-result").load("../process/cntAssistant.php",{
+
+         });
       }
 
      
