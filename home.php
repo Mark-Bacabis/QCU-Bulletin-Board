@@ -1,7 +1,6 @@
 <?php 
   error_reporting(1);
   include './include/db_connection.php';
-  include "./student/session.php";
 
   include "./process/select.php";
 
@@ -9,6 +8,10 @@
   $fullname = $_SESSION['StudentName'];
   $course =  $_SESSION['course'];
 
+
+  if (empty($studID)){
+    header("location: ./student/login.php");
+  }
 
   if (isset($_POST['update'])) {
 
