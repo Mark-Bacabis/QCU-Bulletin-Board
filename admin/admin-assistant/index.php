@@ -410,9 +410,6 @@
                   </div>         
                   
                   <div class="request">
-                     <div class="result">
-                        <p> Result: 3 </p>
-                     </div>
                   
                      <table border="0">
                         <tr>

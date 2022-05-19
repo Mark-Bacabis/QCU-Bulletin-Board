@@ -76,20 +76,16 @@ body{
 /*  home page - MY ANNOUNCEMENTS  */
 .container .home1-content{
     display: flex;
+    flex-direction: column;
     margin-top: -410px;
     margin-left: 830px;
-    width: 25vw;
+    width: 50%;
     overflow-y: scroll;
-    height: 30vw;
+    height: 100%;
     background-color:#ffffff;
     border-radius: 5px;
     align-items: center;
     justify-content: center;
-}
-
-.container .home1-content section h3{
-    margin-top: -190px;
-    letter-spacing: 1px;
 }
 
 

@@ -23,16 +23,18 @@
         
 
     <div class="container">
-        <div class="home-content">
+        <div class="home-content container">
+            <h3>MY ANNOUNCEMENTS</h3>
             <section>
-                <h3>ANNOUNCEMENTS</h3>
+                
             </section>
 
         </div>
 
-        <div class="home1-content">
+        <div class="home1-content container">
+        <h3>ANNOUNCEMENTS</h3>
             <section>
-                <h3>MY ANNOUNCEMENTS</h3>
+                
             </section>
 
         </div>
