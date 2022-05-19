@@ -1,5 +1,6 @@
 <?php 
-  error_reporting(1);
+  error_reporting(0);
+  session_start();
   include './include/db_connection.php';
 
   include "./process/select.php";
@@ -8,10 +9,27 @@
   $fullname = $_SESSION['StudentName'];
   $course =  $_SESSION['course'];
 
+  
 
-  if (empty($studID)){
-    header("location: ./student/login.php");
+
+
+
+  
+
+  if ($_SESSION['status'] == 'invalid' || empty($_SESSION['status'])) {
+    /* Set status to invalid */
+    $_SESSION['status'] = 'invalid';
+
+    /* Unset user data */
+    unset($_SESSION['username']);
+    unset($_SESSION['StudentName']);
+    unset($_SESSION['userid']);
+    unset($_SESSION['password']);
+
+    /* Redirect to login page */
+    header("location:./student/login.php");
   }
+  
 
   if (isset($_POST['update'])) {
 
@@ -38,6 +56,11 @@
     }
  
   }
+
+  $selFacC = mysqli_query($con, "SELECT u.fullname, fa.* FROM `faculty_announcment` fa
+  JOIN `users` u
+  ON fa.empID = u.empID
+  WHERE fa.course = '$course' and fa.status = 'Approved'");
 ?>
 
 
@@ -47,6 +70,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> Home </title>
+  
   <link rel="stylesheet" href="./Styles/home.css">
 
   <!-- fonts -->
@@ -513,19 +537,20 @@
                 <div id="home" data-tab-content class="home active">
                     <div class="home_wrapper">
                       <div class="announcement_left">
-                        <h3>Announcement from BSIT Department</h3>
+                        <h3>Announcement from <?=$course?> Department</h3>
+                        <?php
+                        if(mysqli_num_rows($selFacC)>0){
+                          while($rows=mysqli_fetch_assoc($selFacC)){?>
+
                         <div class="announce">
-                          <p>Dr Isagani Tano</p>
-                          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, quae error inventore repellendus perspiciatis deserunt accusamus, aliquam iure aperiam quo libero quam quidem? Corrupti dolorum, inventore reiciendis blanditiis et sequi.</p>
+                          <p>Dr. <?=$rows['fullname']?></p>
+                          <p> <?=$rows['description']?> </p>
                         </div>
-                        <div class="announce">
-                          <p>Dr Isagani Tano</p>
-                          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, quae error inventore repellendus perspiciatis deserunt accusamus, aliquam iure aperiam quo libero quam quidem? Corrupti dolorum, inventore reiciendis blanditiis et sequi.</p>
-                        </div>
-                        <div class="announce">
-                          <p>Dr Isagani Tano</p>
-                          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, quae error inventore repellendus perspiciatis deserunt accusamus, aliquam iure aperiam quo libero quam quidem? Corrupti dolorum, inventore reiciendis blanditiis et sequi.</p>
-                        </div>
+                         <?php }
+
+                        }
+                        ?>
+                        
                        
                       </div>
                       <div class="announcement_left">

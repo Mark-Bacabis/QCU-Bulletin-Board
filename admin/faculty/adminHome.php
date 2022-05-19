@@ -53,12 +53,21 @@
 
             <div class="home1-content content">
                 <h3> My Announcement </h3>
+                <?php 
+                    if (mysqli_num_rows($selFacApp) > 0){
+                        while($rows=mysqli_fetch_assoc($selFacApp)){ ?>
+                    
                     <div class="announce">
                        <div class="announce-input">
-                            <p> Date </p>
-                            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore unde fugiat quae adipisci vero architecto ipsam vitae eaque autem iste? </p>
+                            <p> <?=$rows['date']?> </p>
+                            <p> <?=$rows['description']?> </p>
                        </div>
                     </div>
+
+                    <?php }
+                    }
+                ?>
+                    
             </div>
             
         </div>
