@@ -2,7 +2,6 @@
   error_reporting(0);
   session_start();
   include './include/db_connection.php';
-
   include "./process/select.php";
 
   $studID = $_SESSION['userid'];
