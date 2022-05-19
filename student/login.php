@@ -1,5 +1,5 @@
 <?php 
-  include "./include/db_connection.php";
+  include "../include/db_connection.php";
 
   session_start();
 
@@ -24,18 +24,25 @@
     if (empty($username) || empty($password)) {
       // echo "Please fill up all fields";
     } else {
-      $queryValidate = "SELECT * FROM stud_accounts WHERE studentId = '$username' AND password = md5('$password')";
+      $queryValidate = "SELECT * FROM `student` s
+      JOIN `student_status` ss
+      ON s.Student_ID = ss.Student_ID
+      JOIN `stud_accounts` sa
+      ON s.Student_ID = sa.studentId
+      WHERE sa.studentId = '$username' AND sa.password = '$password';";
       $sqlValidate = mysqli_query($con, $queryValidate);
       $rowValidate = mysqli_fetch_array($sqlValidate);
 
-      if (mysqli_num_rows($sqlValidate) > 0) {
+      if (mysqli_num_rows($sqlValidate) === 1) {
         $_SESSION['status'] = 'valid';
-        $_SESSION['userid'] = $rowValidate['id'];
+        $_SESSION['userid'] = $rowValidate['StudentID'];
         $_SESSION['password'] = $rowValidate['password'];
         $_SESSION['username'] = $rowValidate['studentId'];
-        $_SESSION['StudentName'] = $rowValidate['StudentName'];
+        $_SESSION['StudentName'] = $rowValidate['Given_Name']." ".$rowValidate['Middle_Name']." ".$rowValidate['Surname'];
+        $_SESSION['course'] = $rowValidate['Course'];
+        
+        header("location: ../home.php");
 
-        pathTo('home');
       } else {
         $_SESSION['status'] = 'invalid';
 
@@ -51,7 +58,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LOGIN</title>
-  <link rel="stylesheet" href="./Styles/login.css">
+  <link rel="stylesheet" href="../Styles/login.css">
   <!-- fonts -->
       <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,7 +69,7 @@
   <div class="nav-container">
     <nav>
       <div class="logo">
-        <img src="./img/QCU_Logo_2019 (1).png" alt="">
+        <img src="../img/QCU_Logo_2019 (1).png" alt="">
         <h3>Quezon City University <span>Bulletin Board</span></h3>
       </div>
     </nav>
@@ -70,19 +77,19 @@
 
   <div class="main">
     <div class="qcu_pic">
-      <img src="./img/ASFASFASFAFASF.png" alt="">
+      <img src="../img/ASFASFASFAFASF.png" alt="">
     </div>
 
   <div class="form_container">
     <div class="form_login_wrapper">
         <div class="welcome">
-          <img src="./img/student.png" alt="">
+          <img src="../img/student.png" alt="">
           <p>Welcome to QCU Bulletin board</p>
         </div>
         <div class="my_form">
      
-          <form action="/qcu_bulletin/login.php" method="post">
-            <img src="./img/user.png" alt="">
+          <form action="./login.php" method="post">
+            <img src="../img/user.png" alt="">
             <h3>Login As Student</h3>
             <div class="input_wrapper">
               <label for="username">Student Number</label>

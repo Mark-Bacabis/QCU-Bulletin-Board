@@ -47,6 +47,7 @@
    
    <!--AJAX-->
    <script src="../../ajax/events.js"> </script>
+   <script src="../../ajax/announce-details.js"></script>
 <body>
    <main>
       <section class="left-dashboard">
@@ -101,69 +102,69 @@
 
          <div class="center-content">
             <!-- OVERVIEW  -->
-            <div class="overview-container container">
-               <div class="overview">
-                  <div class="title-header">
-                     <h2> Dashboard </h2>
-                     <hr>
-                  </div>
-                     <div class="summary-container">
-                        <div class="summary-box students">
-                           <div class="icon">
-                              <img src="../../icon/student-with-graduation-cap.png" alt="">
-                           </div>
-                           <div class="summary-info">
-                              <h1 class="total"> 42 </h1>
-                              <p class="summary-title"> Pending Request</p>
-                           </div>
-                        </div>
-
-                        <div class="summary-box dept-head">
-                           <div class="icon">
-
-                           </div>
-                           <div class="summary-info">
-                              <h1 class="total"> 42 </h1>
-                              <p class="summary-title"> Announcements </p>
-                           </div>
-                        </div>
-
-                        <div class="summary-box admin-assist">
-                           <div class="icon">
-
-                           </div>
-                           <div class="summary-info">
-                              <h1 class="total"> 42 </h1>
-                              <p class="summary-title"> Events </p>
-                           </div>
-                        </div>
+               <div class="overview-container container">
+                  <div class="overview">
+                     <div class="title-header">
+                        <h2> Dashboard </h2>
+                        <hr>
                      </div>
-               </div>
-               
-               <div class="announcements">
-                  <div class="title-header">
-                     <h2> Announcement </h2>
-                     <hr>
-                  </div>
-                  <div class="announcement-box">
-                  <?php
-                     if(mysqli_num_rows($selAnnounceQ) > 0){
-                        while($rows = mysqli_fetch_assoc($selAnnounceQ)){ ?>
-                          
-                              <div class="announcement">
-                                 <h1 class="title"> <?=$rows['title']?></h1>
-                                 <p> <?=$rows['announcement']?></p>
+                        <div class="summary-container">
+                           <div class="summary-box students">
+                              <div class="icon">
+                                 <img src="../../icon/student-with-graduation-cap.png" alt="">
                               </div>
-                              
-                          
-                     <?php   }
-                     } else{
-                        echo "No announcement yet.";
-                     }
-                  ?>
-                   </div>
+                              <div class="summary-info">
+                                 <h1 class="total"> 42 </h1>
+                                 <p class="summary-title"> Pending Request</p>
+                              </div>
+                           </div>
+
+                           <div class="summary-box dept-head">
+                              <div class="icon">
+
+                              </div>
+                              <div class="summary-info">
+                                 <h1 class="total"> 42 </h1>
+                                 <p class="summary-title"> Announcements </p>
+                              </div>
+                           </div>
+
+                           <div class="summary-box admin-assist">
+                              <div class="icon">
+
+                              </div>
+                              <div class="summary-info">
+                                 <h1 class="total"> 42 </h1>
+                                 <p class="summary-title"> Events </p>
+                              </div>
+                           </div>
+                        </div>
+                  </div>
+                  
+                  <div class="announcements">
+                     <div class="title-header">
+                        <h2> Announcement </h2>
+                        <hr>
+                     </div>
+                     <div class="announcement-box">
+                     <?php
+                        if(mysqli_num_rows($selAnnounceQ) > 0){
+                           while($rows = mysqli_fetch_assoc($selAnnounceQ)){ ?>
+                           
+                                 <div class="announcement">
+                                    <h1 class="title"> <?=$rows['title']?></h1>
+                                    <p> <?=$rows['announcement']?></p>
+                                 </div>
+                                 
+                           
+                        <?php   }
+                        } else{
+                           echo "No announcement yet.";
+                        }
+                     ?>
+                     </div>
+                  </div>
                </div>
-            </div>
             <!-- xx OVERVIEW -->
 
             <!-- ANNOUNCEMENT -->
@@ -343,7 +344,7 @@
                   
                      <table border="0">
                         <tr>
-                           <th> id </th>
+                          
                            <th> emp id </th>
                            <th> Fullname </th>
                            <th> Dept </th>
@@ -351,16 +352,21 @@
                            <th> Status </th>
                            <th> Action </th>
                         </tr>
-
-                        <tr>
-                           <td> 1 </td>
-                           <td> 220002 </td>
-                           <td> Mark Melvin Bacabis </td>
-                           <td> BSIT </td>
-                           <td> 2022-05-18 4:20 PM</td>
-                           <td> Pending... </td>
-                           <td> <a href="#"> see details </a></td>
-                        </tr>
+                        <?php
+                        if(mysqli_num_rows($selFac) > 0){
+                           while($rows = mysqli_fetch_assoc($selFac)){ ?>
+                           <tr>
+                              
+                              <td> <?=$rows['empID']?> </td>
+                              <td> <?=$rows['fullname']?> </td>
+                              <td> <?=$rows['course']?> </td>
+                              <td> <?=$rows['date']?></td>
+                              <td> <?=$rows['status']?></td>
+                              <td> <button data-role="Details" data-id="<?=$rows['id']?>"> Details </button> </td>
+                           </tr>
+                        <?php  }
+                           }
+                        ?>
                        
                       
                      </table>
@@ -372,19 +378,18 @@
                            +
                         </div>
                         <!-- <h1> Add Admin Assistant </h1> -->
-                        <div class="announcement-info">
-                           <div class="announcement-title">
-                              <h1> Title: Sample title </h1>
-                           </div>
-                           <div class="announcement-desc">
-                              <h3> Description </h3>
-                              <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta provident quam nobis. Ad repellat tenetur inventore excepturi nulla? Eum quas itaque sit officia incidunt ratione voluptatibus est blanditiis mollitia aperiam? Explicabo architecto nam sapiente impedit voluptate enim rem. Velit, doloribus. </p>
-                           </div>
-                           <div class="announcement-link">
-                              <p> Url: <a href="#"> www.url.com </a> </p>
-                              
-                           </div>
-                        </div>
+                        
+                              <div class="announcement-info">
+                                 <div class="announcement-title">
+                                    <h1> Department:  </h1>
+                                 </div>
+                                 <div class="announcement-desc">
+                                    <h3> Description </h3>
+                                    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta provident quam nobis. Ad repellat tenetur inventore excepturi nulla? Eum quas itaque sit officia incidunt ratione voluptatibus est blanditiis mollitia aperiam? Explicabo architecto nam sapiente impedit voluptate enim rem. Velit, doloribus. </p>
+                                 </div>
+                              </div>
+                
+                        
 
 
                         <div class="form-button">

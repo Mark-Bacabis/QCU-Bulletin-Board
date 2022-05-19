@@ -14,9 +14,6 @@
             <div class="qcu"><h1>QUEZON CITY UNIVERSITY <br><span>Bulletin Board</span></h1>
             </div>
     </div>
-  
-
-
            
             <div class="topnav">
                 <a href="adminHome.php"><b>Home</a>&nbsp;&nbsp;&nbsp;&nbsp;

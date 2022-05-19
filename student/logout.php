@@ -1,9 +1,7 @@
 <?php 
   session_start();
 
-  function pathTo($destination) {
-    echo "<script>window.location.href = '/qcu_bulletin/$destination.php'</script>";
-  }
+
 
   /* Set status to invalid */
   $_SESSION['status'] = 'invalid';
@@ -12,5 +10,5 @@
   unset($_SESSION['username']);
 
   /* Redirect to login page */
-  pathTo('login');
+  header("location: ./login.php");
 ?>

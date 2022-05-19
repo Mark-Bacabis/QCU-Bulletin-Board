@@ -1,17 +1,17 @@
 <?php 
   error_reporting(1);
-  require('./session.php');
-  require('./include/db_connection.php');
+  include './include/db_connection.php';
+  include "./student/session.php";
+
   include "./process/select.php";
 
-  // if (isset($_POST["edit"])) {
-  //   $editId = $_POST['editId'];
-  //   $editUsername = $_POST['editUsername'];
-  //   $editPassword = $_POST['editPassword'];
-  // }
+  $studID = $_SESSION['userid'];
+  $fullname = $_SESSION['StudentName'];
+  $course =  $_SESSION['course'];
+
+
   if (isset($_POST['update'])) {
-    // $updateId = $_POST['updateId'];
-    // $updateUsername = $_POST['updateUsername'];
+
     $updatePassword = $_POST['updatePassword'];
     $updateId = $_SESSION['userid'];
     $oldpassword = $_POST['oldpassword'];
@@ -26,7 +26,7 @@
         $sqlUpdate = mysqli_query($connection, $queryUpdate);
     
         echo '<script>alert("Password successfully updated!")</script>';
-        echo '<script>window.location.href = "/qcu_bulletin/home.php"</script>';
+        echo '<script>window.location.href = "/qcu_bulletin/home.php" </script>';
       }
 
     }else{
@@ -43,7 +43,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
+  <title> Home </title>
   <link rel="stylesheet" href="./Styles/home.css">
 
   <!-- fonts -->
@@ -498,7 +498,7 @@
                   <div data-tab-target="#changepass" class="changepass">
                     Change password
                   </div>
-                  <form class="logout_btn" action="/qcu_bulletin/logout.php" method="post">
+                  <form class="logout_btn" action="./student/logout.php" method="post">
                     <input class="log_btn" type="submit" value="Logout" />
                   </form>
                 </div>

@@ -2,7 +2,7 @@
   session_start();
 
   function pathTo($destination) {
-    echo "<script>window.location.href = '/qcu_bulletin/$destination.php'</script>";
+    echo "<script>window.location.href = './student/$destination.php'</script>";
   }
 
   if ($_SESSION['status'] == 'invalid' || empty($_SESSION['status'])) {
@@ -16,6 +16,6 @@
     unset($_SESSION['password']);
 
     /* Redirect to login page */
-    pathTo('login');
+    pathTo('./students/login');
   }
 ?>

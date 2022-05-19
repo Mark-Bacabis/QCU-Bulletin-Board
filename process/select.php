@@ -34,5 +34,11 @@
    $selEvents = "SELECT * FROM `tbl_announcements` WHERE `type` = 'Events'";
    $selEventsQ = mysqli_query($con, $selEvents);
 
+   // SELECT ALL ANNOUNCEMENT FROM FACULTIES
+   $selFac = mysqli_query($con, "SELECT u.fullname, fa.* FROM `faculty_announcment` fa
+   JOIN `users` u
+   ON fa.empID = u.empID
+   WHERE fa.status = 'Pending'");
+
    
 ?>

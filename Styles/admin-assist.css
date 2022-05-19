@@ -710,7 +710,7 @@ section.center-information .center-header p span:first-child{
    left: 50%;
    top: 50%;
    transform: translate(-50%, -50%);
-   display: flex;
+   display: none;
    align-items: center;
    justify-content: center;
 }

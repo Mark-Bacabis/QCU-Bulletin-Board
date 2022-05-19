@@ -12,7 +12,7 @@
          header("location: ./admin-assistant/index.php");
       }
       if($position == 'faculty'){
-         header("location: ./faculty/index.php");
+         header("location: ./faculty/adminHome.php");
       }
       if($position == 'main admin'){
          header("location: ./admin.php");
