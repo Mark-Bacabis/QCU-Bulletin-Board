@@ -8,10 +8,9 @@ $(document).ready(function(){
 
       $("#add").click(function(){
          var addBtn = $("#add").val();
-         var cancelBtn = $("#cancel").val();
+      
          $(".request table").load("../../process/approved.php",{
             addBtn:addBtn,
-            cancelBtn: cancelBtn,
             id: empID
          });
          document.getElementById('announcement-modal').style.display = 'none';
@@ -19,9 +18,7 @@ $(document).ready(function(){
 
       $("#cancel").click(function(){
          var cancelBtn = $("#cancel").val();
-         var addBtn = $("#add").val();
          $(".request table").load("../../process/approved.php",{
-            addBtn:addBtn,
             cancelBtn: cancelBtn,
             id: empID
          });

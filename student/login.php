@@ -1,22 +1,8 @@
 <?php 
-error_reporting(0);
-include "../include/db_connection.php";
+  error_reporting(0);
+  include "../include/db_connection.php";
 
   session_start();
-
-  /* Functions */
-  function pathTo($destination) {
-    echo "<script>window.location.href = '/qcu_bulletin/$destination.php'</script>";
-  }
-
-  if ($_SESSION['status'] == 'invalid' || empty($_SESSION['status'])) {
-    /* Set Default Invalid */
-    $_SESSION['status'] = 'invalid';
-  }
-
-  if ($_SESSION['status'] == 'valid') {
-    pathTo('home');
-  }
   
   if (isset($_POST['login'])) {
     $username = trim($_POST['username']);
@@ -35,7 +21,7 @@ include "../include/db_connection.php";
       $rowValidate = mysqli_fetch_array($sqlValidate);
 
       if (mysqli_num_rows($sqlValidate) === 1) {
-        $_SESSION['status'] = 'valid';
+        
         $_SESSION['userid'] = $rowValidate['StudentID'];
         $_SESSION['password'] = $rowValidate['password'];
         $_SESSION['username'] = $rowValidate['studentId'];
@@ -89,7 +75,7 @@ include "../include/db_connection.php";
         </div>
         <div class="my_form">
      
-          <form action="./login.php" method="post">
+          <form action="login.php" method="post">
             <img src="../img/user.png" alt="">
             <h3>Login As Student</h3>
             <div class="input_wrapper">
