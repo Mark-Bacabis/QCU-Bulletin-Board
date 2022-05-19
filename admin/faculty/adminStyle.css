@@ -45,72 +45,106 @@
 }
 
 
+main{
+  height: 88vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: rgb(210, 210, 210);;
+}
 
-/*  body  */
-body{
-    background-color: #f0f0f2;
+main .topnav{
+  height: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main .topnav a{
+  text-decoration: none;
+}
+
+main .container{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
+  width: 100%;
+  padding: 0 10%;
+}
+
+main .container .content{
+  background-color: #fff;
+  width: 100%;
+  height: 450px;
+  margin: 0 2%;
+  overflow-y: scroll;
+  padding: 2%;
+}
+
+main .container .content.home1-content{
+  width: 60%;
 }
 
 
 
-/*  home page - ANNOUNCEMENTS  */
-.container .home-content{
-    display: flex;
-    margin-left: 190px;
-    width: 45vw;
-    height: 30vw;
-    overflow-y: scroll;
-    background-color:#ffffff;
-    border-radius: 5px;
-    align-items: center;
-    justify-content: center;
-}
-
-.container .home-content section h3{
-    margin-top: -190px;
-    letter-spacing: 1px;
+main .container .content .announce{  
+  width: 100%;
+  height: max-content;
+  background-color: #afafaf;
+  padding: 2%;
+  font-size: .9em;
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
-
-/*  home page - MY ANNOUNCEMENTS  */
-.container .home1-content{
-    display: flex;
-    flex-direction: column;
-    margin-top: -410px;
-    margin-left: 830px;
-    width: 50%;
-    overflow-y: scroll;
-    height: 100%;
-    background-color:#ffffff;
-    border-radius: 5px;
-    align-items: center;
-    justify-content: center;
-}
-
-
-
-
-/*  home & announcement navigation  */
-  .topnav{
-    text-align: center;
-    margin-top: 40px;
-    margin-bottom: 40px;
-  }
-
-  .topnav a {
-    letter-spacing: 2px;
-    color: black;
-    display: center;
-    font-size: 17px;
-  }
-  
-  .topnav a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-
+main .container .content .announce .announce-input{
+  text-align: justify;
+  margin-right: 20px;
+  font-weight: 400;
  
+}  
+main .container .content .announce .announce-input p{
+  font-size: .9rem;
+}
+
+
+main .container .content .announce .img{
+  width: 40%;
+}  
+
+main .container .content .announce .img img{
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*  announcement page - announcement content  */
   .container .announce-content{

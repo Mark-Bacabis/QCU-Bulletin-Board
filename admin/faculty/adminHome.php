@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    include "../../include/db_connection.php";
+    include "../../process/select.php";
+    
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,31 +23,47 @@
             <div class="qcu"><h1>QUEZON CITY UNIVERSITY <br><span>Bulletin Board</span></h1>
             </div>
     </div>
-           
-            <div class="topnav">
-                <a href="adminHome.php"><b>Home</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="adminAnnounce.php"><b>Announcements</a>
+    <main>
+        <div class="topnav">
+            <a href="adminHome.php"><b>Home</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="adminAnnounce.php"><b>Announcements</a>
+        </div>
+
+        
+
+        <div class="container">
+            <div class="home-content content">
+                <h2> Announcement </h2>
+                <?php if(mysqli_num_rows($selAnnounceQ) > 0 ){ 
+                    while($rows = mysqli_fetch_assoc($selAnnounceQ)){ ?>
+                          <div class="announce">
+                       <div class="announce-input">
+                            <h1> <?=$rows['title']?> </h1>
+                            <p> <?=$rows['announcement']?> <a href="<?=$rows['link']?>"><?=$rows['link']?></a></p>
+                       </div>
+                       <div class="img">
+                            <img src="../../img/announce images/<?=$rows['image']?>" alt="">
+                       </div>
+                    </div>
+                <?php  }
+                }
+                    ?>
+                  
             </div>
 
-        
-
-    <div class="container">
-        <div class="home-content container">
-            <h3>MY ANNOUNCEMENTS</h3>
-            <section>
-                
-            </section>
-
+            <div class="home1-content content">
+                <h3> My Announcement </h3>
+                    <div class="announce">
+                       <div class="announce-input">
+                            <p> Date </p>
+                            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore unde fugiat quae adipisci vero architecto ipsam vitae eaque autem iste? </p>
+                       </div>
+                    </div>
+            </div>
+            
         </div>
 
-        <div class="home1-content container">
-        <h3>ANNOUNCEMENTS</h3>
-            <section>
-                
-            </section>
+    </main>
 
-        </div>
-        
-    </div>
     </body>
     </html>

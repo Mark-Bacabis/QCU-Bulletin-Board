@@ -45,6 +45,8 @@
      JOIN `users` u
      ON fa.empID = u.empID
      WHERE fa.status = 'Approved' OR fa.status = 'Declined' ");
+
+     
   
 
    
