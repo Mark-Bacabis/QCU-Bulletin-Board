@@ -399,6 +399,7 @@
                             
                               <td> <?=$rows['studentId']?></td>
                               <td> <?=$rows['StudentName']?></td>
+                              <td> <?=$rows['email']?> </td>
                               <td> <?=$rows['course']?> </td>
                               <!-- <td> <?=$rows['Dept']?> </td> -->
                            </tr>

@@ -28,11 +28,8 @@
     <div class="container">
         <div class="announce-content">
             <section>
-                <form action="#" method="get">
-                    <input type="text" id="title" name="title" placeholder=" Title Here..."><br><br>
+                <form action="#" method="post">
                     <textarea name="announcement"></textarea><br>
-                    <input type="text" id="url" name="url" placeholder=" URL: www.example.com">
-                    <input type="file" id="file" name="file">
                     <input type="submit" value="POST">
                 </form>
             </section>
