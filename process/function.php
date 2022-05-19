@@ -133,4 +133,20 @@ function sendEmail($empID) {
 }
 
 
+function approveAnnounce($id){
+   include "../include/db_connection.php";
+
+   $upd = "UPDATE `faculty_announcment` SET `status`='Approved' WHERE `id` = $id";
+   mysqli_query($con, $upd);
+}
+
+
+function declineAnnounce($id){
+   include "../include/db_connection.php";
+
+   $upd = "UPDATE `faculty_announcment` SET `status`='Declined' WHERE `id` = $id";
+   mysqli_query($con, $upd);
+}
+
+
 ?>

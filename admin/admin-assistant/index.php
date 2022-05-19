@@ -48,6 +48,7 @@
    <!--AJAX-->
    <script src="../../ajax/events.js"> </script>
    <script src="../../ajax/announce-details.js"></script>
+   <script src="../../ajax/status-announce.js"></script>
 <body>
    <main>
       <section class="left-dashboard">
@@ -344,7 +345,6 @@
                   
                      <table border="0">
                         <tr>
-                          
                            <th> emp id </th>
                            <th> Fullname </th>
                            <th> Dept </th>
@@ -381,7 +381,7 @@
                         
                               <div class="announcement-info">
                                  <div class="announcement-title">
-                                    <h1> Department:  </h1>
+                                    <h1> Department:  <span id="id"> </span></h1>
                                  </div>
                                  <div class="announcement-desc">
                                     <h3> Description </h3>
@@ -424,18 +424,25 @@
                            <th> Date </th>
                            <th> Status </th>
                         </tr>
-
-                        <tr>
+                     <?php
+                        if(mysqli_num_rows($selFacStat) > 0){
+                           while($rows = mysqli_fetch_assoc($selFacStat)){ ?>
+                           <tr>
                          
-                           <td> 220002 </td>
-                           <td> Mark Melvin Bacabis </td>
-                           <td> <span style="font-size: .8em;"> Lorem ipsum dolor sit amet... </span></td>
-                           <td> BSIT </td>
-                           <td> <span style="font-size: .8em;"> 2022-05-18 4:20 PM </span></td>
-                           <td> Approved </td>
-                          
-                        </tr>
-                     
+                              <td> <?=$rows['empID']?> </td>
+                              <td> <?=$rows['fullname']?> </td>
+                              <td> <span style="font-size: .8em;"> <?=substr($rows['description'], 0, 15)?>... </span></td>
+                              <td>  <?=$rows['course']?> </td>
+                              <td> <span style="font-size: .8em;"> <?=$rows['date']?> </span></td>
+                              <td> <?=$rows['status']?> </td>
+                              
+                           </tr>
+                   
+
+                     <?php }
+                        }
+                     ?>
+                        
                      </table>
                   </div>
                </div>
