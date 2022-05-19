@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root{
+    --headerColor:#002347;
+    --loginBoxColor: #023047;
+    --loginText:#707070;
+}
+
+/*  Header  */
+.header{
+    background-color: #002347;
+    height: 12vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+}
+.header .logo {
+    height: 60px;
+    width: 60px;
+    margin-right: 10px;
+}
+
+.header .logo img{
+    height: 100%;
+    width: 100%;
+    margin-right: 10px;
+}
+
+.header .qcu h1{
+    letter-spacing: 2px;
+    font-size: 18px;
+    color: white;
+}
+
+.header .qcu h1 span{
+    font-size: 16px;
+    font-weight: normal;
+}
+
+
+
+/*  body  */
+body{
+    background-color: #f0f0f2;
+}
+
+
+
+/*  home page - ANNOUNCEMENTS  */
+.container .home-content{
+    display: flex;
+    margin-left: 190px;
+    width: 45vw;
+    height: 30vw;
+    overflow-y: scroll;
+    background-color:#ffffff;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.container .home-content section h3{
+    margin-top: -190px;
+    letter-spacing: 1px;
+}
+
+
+
+/*  home page - MY ANNOUNCEMENTS  */
+.container .home1-content{
+    display: flex;
+    margin-top: -410px;
+    margin-left: 830px;
+    width: 25vw;
+    overflow-y: scroll;
+    height: 30vw;
+    background-color:#ffffff;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.container .home1-content section h3{
+    margin-top: -190px;
+    letter-spacing: 1px;
+}
+
+
+
+
+/*  home & announcement navigation  */
+  .topnav{
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  .topnav a {
+    letter-spacing: 2px;
+    color: black;
+    display: center;
+    font-size: 17px;
+  }
+  
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+ 
+
+/*  announcement page - announcement content  */
+  .container .announce-content{
+    display: flex;
+    margin: auto;
+    width: 55vw;
+    height: 32vw;
+    background-color:#ffffff;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+  .container .announce-content form input[name='title']{
+    width: 350px;
+    height: 35px;
+  }
+
+  .container .announce-content form input[name='url']{
+    width: 290px;
+    height: 35px;
+  }
+
+  .container .announce-content form textarea {
+    width: 620px;
+    height: 260px;
+  }
+
+  .container .announce-content form input[type='file']{
+    width: 200px;
+    font-size: .9em;
+    padding: 8px;
+    margin-left: 34px;
+  }
+
+  .container .announce-content form input[type='submit']{
+    background: #002347;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-left: 23px;
+    margin-top: 18px;
+    transition: background ease .3s;
+  }
+  
+
+
+/*  change pass page  */
+  .container .pass-content{
+    margin-top: 80px;
+    display: flex;
+    margin-left: 310px;
+    width: 32vw;
+    height: 25vw;
+    background-color:#ffffff;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.container .pass-content section h3{
+    margin-bottom: -10px;
+    margin-top: -5px;
+    letter-spacing: 1px;
+}
+
+.container .pass-content section form label{
+    letter-spacing: 2px;
+    font-size: 14px;
+}
+
+.container .pass-content section form label span{
+    letter-spacing: 2px;
+    font-size: 10px;
+    color: #b6b5b5;
+}
+
+.container .pass-content section form input{
+    height: 35px;
+    width: 350px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding-left: 7px;
+    font-size: 16px;
+}
+
+.container .pass-content section form input[type='submit']{
+    background: #11af2c;
+    width: 120px;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-left: 228px;
+    margin-top: 7px;
+    transition: background ease .3s;
+  }
+  
+
+
+/*  change pass page - change profile  */
+.container .pass1-content{
+    display: flex;
+    margin-top: -342px;
+    margin-left: 770px;
+    width: 21vw;
+    height: 25vw;
+    background-color:#ffffff;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.container .pass1-content form img{
+    margin-left: 90px;
+    height: 100px;
+    width: 100px;
+    border-radius: 150px;
+    border: 1px solid black;
+    margin-bottom: 20px;
+}
+
+.container .pass1-content form input[type='file']{
+    width: 200px;
+    font-size: .9em;
+    padding: 8px;
+    margin-left: 47px;
+  }

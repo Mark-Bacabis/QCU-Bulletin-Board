@@ -1,5 +1,5 @@
 <?php 
-  require('./database.php');
+  include "./include/db_connection.php";
 
   session_start();
 
@@ -24,8 +24,8 @@
     if (empty($username) || empty($password)) {
       // echo "Please fill up all fields";
     } else {
-      $queryValidate = "SELECT * FROM accounts WHERE studentId = '$username' AND password = md5('$password')";
-      $sqlValidate = mysqli_query($connection, $queryValidate);
+      $queryValidate = "SELECT * FROM stud_accounts WHERE studentId = '$username' AND password = md5('$password')";
+      $sqlValidate = mysqli_query($con, $queryValidate);
       $rowValidate = mysqli_fetch_array($sqlValidate);
 
       if (mysqli_num_rows($sqlValidate) > 0) {

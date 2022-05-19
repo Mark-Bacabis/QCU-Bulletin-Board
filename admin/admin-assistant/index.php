@@ -14,6 +14,9 @@
    $selAdmin = "SELECT * FROM `users` WHERE `position` = 'admin' AND `empID` = $empID";
    $selectedAdmin = mysqli_query($con, $selAdmin);
    $admin = mysqli_fetch_assoc($selectedAdmin);
+
+   // SELECT ANNOUNCMENT 
+   $selAnnounce = mysqli_query($con, "SELECT * FROM `tbl_announcements` WHERE `type` = 'Announcement' ORDER BY `tbl_announcements`.`id` DESC");
    
    if(empty($empID)){
       header("location:./index.php");
@@ -43,7 +46,7 @@
    <script src="http://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
    
    <!--AJAX-->
-  
+   <script src="../../ajax/events.js"> </script>
 <body>
    <main>
       <section class="left-dashboard">
@@ -148,8 +151,8 @@
                         while($rows = mysqli_fetch_assoc($selAnnounceQ)){ ?>
                           
                               <div class="announcement">
-                                 <h1 class="title"> Cute si iska <span> 2022-05-18 1:27 PM </span></h1>
-                                 <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur nam debitis maiores repudiandae voluptas nulla voluptatibus doloremque error optio neque.</p>
+                                 <h1 class="title"> <?=$rows['title']?></h1>
+                                 <p> <?=$rows['announcement']?></p>
                               </div>
                               
                           
@@ -177,19 +180,19 @@
                            <select name="type" id="type">
                               <option value="Announcement"> Announcement </option>
                               <option value="Events"> Events </option>
-                              
+                         
                            </select>
                         </div>
                      </div>
                      
                      <div class="event-desc">
-                        <textarea name="desc" id="event-desc" placeholder="Announcements and events"></textarea>
+                        <textarea name="desc" id="event-desc" placeholder="Announcements, Events, and News"></textarea>
                      </div>
 
                      <div class="submit-form">
                         <input type="url" name="link" id="link" placeholder="Url: www.example.com">
                         <input type="file" name="eventImg" id="event-img">
-                        <button id="Post"> Post </button>
+                        <button id="Post" onclick="Post()"> Post </button>
                         
                      </div>
 
@@ -203,10 +206,14 @@
                      
                      <div class="output-container" id="output-container">
                         <div class="events-content-box">
+                        <?php if(mysqli_num_rows($selAnnounce) > 0) {
+                              while($announce = mysqli_fetch_assoc($selAnnounce)) { ?>
                            <div class="events-data">
-                              <h1> Iska Cute </h1>
-                              <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate non eum nisi id vero doloribus sed ducimus nobis nesciunt quam. <a target="blank" href="#"> Learn More </a> </p>
+                              <h1> <?=$announce['title']?> </h1>
+                              <p> <?=$announce['announcement']?> <a target="blank" href="<?=$announce['link']?>"> Learn More </a> </p>
                            </div>
+                           <?php } 
+                        } ?>
                         </div>
                      </div>
                   </div>
@@ -318,6 +325,8 @@
                      
                   </div>
                </div>
+
+               
             <!-- xx MAINTENANCE -->
 
             <!-- REQUEST -->
@@ -504,7 +513,7 @@
 
 
 </script>
-<script src="../../Javascript/admin.js"></script>
+<script src="../../Javascript/admin-assist.js"></script>
 <script src="../../Javascript/calendar.js"></script>
 <script src="../../Javascript/dateNow.js"></script>
 

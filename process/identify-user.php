@@ -30,7 +30,7 @@
             $_SESSION['empID'] = $userStats['empID'];
             $_SESSION['position'] = $userStats['position'];
             actLog($schoolID, $activity, $date, $time);
-            header("location: ../admin/faculty/index.php");
+            header("location: ../admin/faculty/adminHome.php");
          }
          else if($userStats['position'] === 'admin'){
             $_SESSION['empID'] = $userStats['empID'];

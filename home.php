@@ -1,7 +1,8 @@
 <?php 
   error_reporting(1);
-  //require('./session.php');
+  require('./session.php');
   require('./include/db_connection.php');
+  include "./process/select.php";
 
   // if (isset($_POST["edit"])) {
   //   $editId = $_POST['editId'];
@@ -54,394 +55,394 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 
-    <style>
+<style>
 
-      body{
-        background: rgb(240, 240, 240);
-      }
-      .main{
-    margin-top: 90px;
-    /* height: 100vh; */
-    width: 100%;
-    /* background: rgb(240, 240, 240); */
-    background:none;
-}
+        body{
+          background: rgb(240, 240, 240);
+        }
+        .main{
+      margin-top: 90px;
+      /* height: 100vh; */
+      width: 100%;
+      /* background: rgb(240, 240, 240); */
+      background:none;
+  }
 
-.main .bulletin .tab-content .about .about_wrapper {
+  .main .bulletin .tab-content .about .about_wrapper {
 
 
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-.main .bulletin .tab-content .about .about_wrapper .history_container{
-  background:#fff;
-  padding: 20px;
-  margin-bottom:50px;
-}
-.main .bulletin .tab-content .about .about_wrapper .history_container .qcu_wrapper{
-    display: flex;
-    margin-bottom:40px;
-}
-.main .bulletin .tab-content .about .about_wrapper .history_container .qcu_wrapper img{
-    height: auto;
-    width: 330px;
-    border-radius:5px;
-    margin-right:20px;
-
-}
-.main .bulletin .tab-content .about .about_wrapper .history_container .qcu_wrapper{
-  font-size:15px;
-}
-.main .bulletin .tab-content .about .about_wrapper .history_container h3{
-    font-weight: 600;
-    font-size: 24px;
-    text-align: center;
-    color: #000;
-    padding-top: 0rem;
-    padding-bottom: 0rem;
-    padding: 20px;
-}
-.main .bulletin .tab-content .about .about_wrapper .mission_container{
-    padding:20px;
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    grid-gap:20px;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+  }
+  .main .bulletin .tab-content .about .about_wrapper .history_container{
     background:#fff;
-}
-.main .bulletin .tab-content .about .about_wrapper .mission_container .card{
-  background: rgb(240, 240, 240);
-  padding:15px;
-  border-radius:8px;
-  height:100%;
-  text-align:center;
-}
-.main .bulletin .tab-content .about .about_wrapper .mission_container .card p,
-.main .bulletin .tab-content .about .about_wrapper .mission_container .card .stategic,
-.main .bulletin .tab-content .about .about_wrapper .mission_container .card .values{
-  font-size:15px;
-  margin-top:15px;
-}
+    padding: 20px;
+    margin-bottom:50px;
+  }
+  .main .bulletin .tab-content .about .about_wrapper .history_container .qcu_wrapper{
+      display: flex;
+      margin-bottom:40px;
+  }
+  .main .bulletin .tab-content .about .about_wrapper .history_container .qcu_wrapper img{
+      height: auto;
+      width: 330px;
+      border-radius:5px;
+      margin-right:20px;
 
-.main .bulletin .tab-content .about .campuses{ 
+  }
+  .main .bulletin .tab-content .about .about_wrapper .history_container .qcu_wrapper{
+    font-size:15px;
+  }
+  .main .bulletin .tab-content .about .about_wrapper .history_container h3{
+      font-weight: 600;
+      font-size: 24px;
+      text-align: center;
+      color: #000;
+      padding-top: 0rem;
+      padding-bottom: 0rem;
+      padding: 20px;
+  }
+  .main .bulletin .tab-content .about .about_wrapper .mission_container{
+      padding:20px;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      grid-gap:20px;
+      background:#fff;
+  }
+  .main .bulletin .tab-content .about .about_wrapper .mission_container .card{
+    background: rgb(240, 240, 240);
+    padding:15px;
+    border-radius:8px;
+    height:100%;
+    text-align:center;
+  }
+  .main .bulletin .tab-content .about .about_wrapper .mission_container .card p,
+  .main .bulletin .tab-content .about .about_wrapper .mission_container .card .stategic,
+  .main .bulletin .tab-content .about .about_wrapper .mission_container .card .values{
+    font-size:15px;
+    margin-top:15px;
+  }
+
+  .main .bulletin .tab-content .about .campuses{ 
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      margin-bottom:20px;
+  }
+  .main .bulletin .tab-content .about .campuses h3{ 
+    font-weight: 600;
+      font-size: 24px;
+      text-align: center;
+      color: #000;
+      padding-top: 0rem;
+      padding-bottom: 0rem;
+      padding: 20px;
+  }
+
+  .main .bulletin .tab-content .about .campuses .campuses_card_wrapper{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    height :400px;
+  }
+  .main .bulletin .tab-content .about .campuses .campuses_card_wrapper .campuses_card {
+    border-radius:8px;
+
+    width: 370px;
+    background:#fff;
+  }
+  .main .bulletin .tab-content .about .campuses .campuses_card_wrapper .campuses_card:nth-child(2){
+    transform:scale(1.0);
+  }
+  .main .bulletin .tab-content .about .campuses .campuses_card_wrapper .campuses_card img{
+    height:auto;
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    margin-bottom:20px;
-}
-.main .bulletin .tab-content .about .campuses h3{ 
-  font-weight: 600;
-    font-size: 24px;
-    text-align: center;
-    color: #000;
-    padding-top: 0rem;
-    padding-bottom: 0rem;
-    padding: 20px;
-}
+    border-top-left-radius:8px;
+    border-top-right-radius:8px;
+  }
+  .main .bulletin .tab-content .about .campuses .campuses_card_wrapper .campuses_card .campuses_content{
+    padding:15px;
+    text-align:center;
+    display:grid;
+  }
+  .main .bulletin .tab-content .about .campuses .campuses_card_wrapper .campuses_card .campuses_content span:nth-child(1){
+    font-weight:bold;
+    margin-bottom:15px;
+  }
+  /* executive */
+  .main .bulletin .tab-content .about .executive{ 
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      height:800px;
+  }
+  .main .bulletin .tab-content .about .executive h3{ 
+    font-weight: 600;
+      font-size: 24px;
+      text-align: center;
+      color: #000;
+      padding-top: 0rem;
+      padding-bottom: 0rem;
+      padding: 20px;
+  }
 
-.main .bulletin .tab-content .about .campuses .campuses_card_wrapper{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  height :400px;
-}
-.main .bulletin .tab-content .about .campuses .campuses_card_wrapper .campuses_card {
-  border-radius:8px;
-
-  width: 370px;
-  background:#fff;
-}
-.main .bulletin .tab-content .about .campuses .campuses_card_wrapper .campuses_card:nth-child(2){
-  transform:scale(1.0);
-}
-.main .bulletin .tab-content .about .campuses .campuses_card_wrapper .campuses_card img{
-  height:auto;
-  width: 100%;
-  border-top-left-radius:8px;
-  border-top-right-radius:8px;
-}
-.main .bulletin .tab-content .about .campuses .campuses_card_wrapper .campuses_card .campuses_content{
-  padding:15px;
-  text-align:center;
-  display:grid;
-}
-.main .bulletin .tab-content .about .campuses .campuses_card_wrapper .campuses_card .campuses_content span:nth-child(1){
-  font-weight:bold;
-  margin-bottom:15px;
-}
-/* executive */
-.main .bulletin .tab-content .about .executive{ 
+  .main .bulletin .tab-content .about .executive .executive_card_wrapper{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .main .bulletin .tab-content .about .executive .executive_card_wrapper .executive_card {
+    border-radius:8px;
+    height:640px;
+    width: 370px;
+    background:#fff;
+  }
+  .main .bulletin .tab-content .about .executive .executive_card_wrapper .executive_card:nth-child(2){
+    height:660px;
+  }
+  /* .main .bulletin .tab-content .about .executive .executive_card_wrapper .executive_card:nth-child(2){
+    transform:scale(1.0);
+  } */
+  .main .bulletin .tab-content .about .executive .executive_card_wrapper .executive_card img{
+    height:500px;
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    height:800px;
-}
-.main .bulletin .tab-content .about .executive h3{ 
-  font-weight: 600;
-    font-size: 24px;
-    text-align: center;
-    color: #000;
-    padding-top: 0rem;
-    padding-bottom: 0rem;
-    padding: 20px;
-}
+    border-top-left-radius:8px;
+    border-top-right-radius:8px;
+  }
+  .main .bulletin .tab-content .about .executive .executive_card_wrapper .executive_card:nth-child(2) img{
+    /* height:500px; */
+  }
+  .main .bulletin .tab-content .about .executive .executive_card_wrapper .executive_card .executive_content{
+    padding:15px;
+    text-align:center;
+    display:grid;
+  }
+  .main .bulletin .tab-content .about .executive .executive_card_wrapper .executive_card .executive_content span:nth-child(1){
+    font-weight:bold;
+    margin-bottom:15px;
+  }
 
-.main .bulletin .tab-content .about .executive .executive_card_wrapper{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-.main .bulletin .tab-content .about .executive .executive_card_wrapper .executive_card {
-  border-radius:8px;
-  height:640px;
-  width: 370px;
-  background:#fff;
-}
-.main .bulletin .tab-content .about .executive .executive_card_wrapper .executive_card:nth-child(2){
-  height:660px;
-}
-/* .main .bulletin .tab-content .about .executive .executive_card_wrapper .executive_card:nth-child(2){
-  transform:scale(1.0);
-} */
-.main .bulletin .tab-content .about .executive .executive_card_wrapper .executive_card img{
-  height:500px;
-  width: 100%;
-  border-top-left-radius:8px;
-  border-top-right-radius:8px;
-}
-.main .bulletin .tab-content .about .executive .executive_card_wrapper .executive_card:nth-child(2) img{
-  /* height:500px; */
-}
-.main .bulletin .tab-content .about .executive .executive_card_wrapper .executive_card .executive_content{
-  padding:15px;
-  text-align:center;
-  display:grid;
-}
-.main .bulletin .tab-content .about .executive .executive_card_wrapper .executive_card .executive_content span:nth-child(1){
-  font-weight:bold;
-  margin-bottom:15px;
-}
+  /* contact */
+  .main .bulletin .tab-content .contact .contact_wrapper{
+    display: grid;
+      grid-template-columns:1fr 40% ;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      margin: 0 auto;
+      grid-gap: 30px;
+      /* background:pink; */
+  }
+  .main .bulletin .tab-content .contact .contact_wrapper .contact_form{
+    background:#fff;
+    padding:30px;
+    display:grid;
+  }
+  .main .bulletin .tab-content .contact .contact_wrapper .contact_form label{
+    /* margin-bottom:10px; */
+  }
 
-/* contact */
-.main .bulletin .tab-content .contact .contact_wrapper{
-  display: grid;
-    grid-template-columns:1fr 40% ;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    margin: 0 auto;
-    grid-gap: 30px;
-    /* background:pink; */
-}
-.main .bulletin .tab-content .contact .contact_wrapper .contact_form{
-  background:#fff;
-  padding:30px;
-  display:grid;
-}
-.main .bulletin .tab-content .contact .contact_wrapper .contact_form label{
-  /* margin-bottom:10px; */
-}
-
-.main .bulletin .tab-content .contact .contact_wrapper .contact_form input{
-  height:40px;
-  margin-bottom:15px;
-  border:1px solid gray;
-}
-.main .bulletin .tab-content .contact .contact_wrapper .contact_form textarea{
-  padding-bottom:100px;
-  border:1px solid gray;
-}
-.main .bulletin .tab-content .contact .contact_wrapper .contact_form button{
-  width:140px;
-  height:40px;
-  background:#1cA72F;
-  outline:none;
-  border:none;
-  color:#fff;
-  border-radius:8px;
-  justify-self:end;
-  font-family: 'Poppins', sans-serif;
-  font-size:14px;
-  cursor:pointer;
-  margin-top:15px;
-}
-.main .bulletin .tab-content .contact .contact_wrapper .help{
-
-}
-.main .bulletin .tab-content .contact .contact_wrapper .help .divone{
-  background:#fff;
-  padding:20px;
-  margin-bottom:20px;
-}
-.main .bulletin .tab-content .contact .contact_wrapper .help .divone h3{
-  padding:0;
-  font-size:20px;
-  color:#000;
-  font-weight:700;
-  text-align:left;
-  margin-bottom:15px;
-  color:#002347;
-}
-.main .bulletin .tab-content .contact .contact_wrapper .help .divone p{
-  color:#002347;
-}
-
-.main .bulletin .tab-content .contact .contact_wrapper .help .divone.divtwo span{
-  font-weight:600;
-  color:#002347;
-  font-size:14px;
-}
-.main .bulletin .tab-content .contact .contact_wrapper .help .divone.divtwo{
-  display:grid;
-}
-.main .bulletin .tab-content .contact .contact_wrapper .help .divone.divtwo span:nth-child(2),
-.main .bulletin .tab-content .contact .contact_wrapper .help .divone.divtwo span:nth-child(6){
-  margin-bottom:10px;
-}
-.main .bulletin .tab-content .contact .contact_wrapper .help .divone.divtwo span:nth-child(4),
-.main .bulletin .tab-content .contact .contact_wrapper .help .divone.divtwo span:nth-child(8){
-  margin-bottom:4px;
-}
-.main .bulletin .tab-content .contact .contact_wrapper .help .divone.divtwo .cont{
-  font-size:13px;
-  color:gray;
-} 
-/* change password */
-.main .bulletin .tab-content .changepass{
-  /* display: grid; */
-    grid-template-columns:1fr 40% ;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    margin: 0 auto;
-    grid-gap: 30px;
-  
-}
-.main .bulletin .tab-content .changepass .changepass_form{
-  /* margin:0 auto; */
-  background:#fff;
-  padding:25px;
-  width:100%;
-  max-width:500px;
-  margin:0 auto;
-  height:450px;
-  display:flex;
-  flex-direction:column;
-}
-.main .bulletin .tab-content .changepass .changepass_form h4{
-  font-size:20px;
-  text-align: center;
-  margin-bottom:30px;
-}
-.main .bulletin .tab-content .changepass .changepass_form label{
-  color:#002347;
-  font-size:16px;
-  font-weight:600;
-}
-.main .bulletin .tab-content .changepass .changepass_form input{
-  height:40px;
-  border:1px solid gray;
-  margin:5px;
-  margin-bottom:15px;
-}
-.main .bulletin .tab-content .changepass .changepass_form input.submit{
-  width:160px;
-  background:#1cA72F;
-  outline:none;
-  border:none;
-  color:#fff;
-  border-radius:8px;
-  align-self:flex-end;
-  font-family: 'Poppins', sans-serif;
-  font-size:14px;
-  cursor:pointer;
-}
-
-
-body.dark {
-	background: #292c35;
-}
-
-.main .bulletin .wrapper .logout .btn_logout{
-  font-size:18px;
-  font-weight:700 ;
-}
-body.dark .main .bulletin .wrapper .logout .btn_logout{
+  .main .bulletin .tab-content .contact .contact_wrapper .contact_form input{
+    height:40px;
+    margin-bottom:15px;
+    border:1px solid gray;
+  }
+  .main .bulletin .tab-content .contact .contact_wrapper .contact_form textarea{
+    padding-bottom:100px;
+    border:1px solid gray;
+  }
+  .main .bulletin .tab-content .contact .contact_wrapper .contact_form button{
+    width:140px;
+    height:40px;
+    background:#1cA72F;
+    outline:none;
+    border:none;
     color:#fff;
-}
+    border-radius:8px;
+    justify-self:end;
+    font-family: 'Poppins', sans-serif;
+    font-size:14px;
+    cursor:pointer;
+    margin-top:15px;
+  }
+  .main .bulletin .tab-content .contact .contact_wrapper .help{
 
-body.dark .tabs li{
-      margin: 0 1rem;
-      font-size: 18px;
-      color: #fff;
-      transition: 0.3s;
-      font-weight: 700;
-}
-body.dark .tab.active{
-  border-bottom: 2px solid #fff;
-}
-.checkbox {
-	opacity: 0;
-	position: absolute;
-}
+  }
+  .main .bulletin .tab-content .contact .contact_wrapper .help .divone{
+    background:#fff;
+    padding:20px;
+    margin-bottom:20px;
+  }
+  .main .bulletin .tab-content .contact .contact_wrapper .help .divone h3{
+    padding:0;
+    font-size:20px;
+    color:#000;
+    font-weight:700;
+    text-align:left;
+    margin-bottom:15px;
+    color:#002347;
+  }
+  .main .bulletin .tab-content .contact .contact_wrapper .help .divone p{
+    color:#002347;
+  }
 
-.label {
-	background-color: #111;
-	border-radius: 50px;
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 5px;
-	position: relative;
-	height: 26px;
-	width: 50px;
-	transform: scale(1.5);
-}
+  .main .bulletin .tab-content .contact .contact_wrapper .help .divone.divtwo span{
+    font-weight:600;
+    color:#002347;
+    font-size:14px;
+  }
+  .main .bulletin .tab-content .contact .contact_wrapper .help .divone.divtwo{
+    display:grid;
+  }
+  .main .bulletin .tab-content .contact .contact_wrapper .help .divone.divtwo span:nth-child(2),
+  .main .bulletin .tab-content .contact .contact_wrapper .help .divone.divtwo span:nth-child(6){
+    margin-bottom:10px;
+  }
+  .main .bulletin .tab-content .contact .contact_wrapper .help .divone.divtwo span:nth-child(4),
+  .main .bulletin .tab-content .contact .contact_wrapper .help .divone.divtwo span:nth-child(8){
+    margin-bottom:4px;
+  }
+  .main .bulletin .tab-content .contact .contact_wrapper .help .divone.divtwo .cont{
+    font-size:13px;
+    color:gray;
+  } 
+  /* change password */
+  .main .bulletin .tab-content .changepass{
+    /* display: grid; */
+      grid-template-columns:1fr 40% ;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      margin: 0 auto;
+      grid-gap: 30px;
+    
+  }
+  .main .bulletin .tab-content .changepass .changepass_form{
+    /* margin:0 auto; */
+    background:#fff;
+    padding:25px;
+    width:100%;
+    max-width:500px;
+    margin:0 auto;
+    height:450px;
+    display:flex;
+    flex-direction:column;
+  }
+  .main .bulletin .tab-content .changepass .changepass_form h4{
+    font-size:20px;
+    text-align: center;
+    margin-bottom:30px;
+  }
+  .main .bulletin .tab-content .changepass .changepass_form label{
+    color:#002347;
+    font-size:16px;
+    font-weight:600;
+  }
+  .main .bulletin .tab-content .changepass .changepass_form input{
+    height:40px;
+    border:1px solid gray;
+    margin:5px;
+    margin-bottom:15px;
+  }
+  .main .bulletin .tab-content .changepass .changepass_form input.submit{
+    width:160px;
+    background:#1cA72F;
+    outline:none;
+    border:none;
+    color:#fff;
+    border-radius:8px;
+    align-self:flex-end;
+    font-family: 'Poppins', sans-serif;
+    font-size:14px;
+    cursor:pointer;
+  }
 
-.label .ball {
-	background-color: #fff;
-	border-radius: 50%;
-	position: absolute;
-	top: 2px;
-	left: 2px;
-	height: 22px;
-	width: 22px;
-	transform: translateX(0px);
-	transition: transform 0.2s linear;
-}
 
-.checkbox:checked + .label .ball {
-	transform: translateX(24px);
-}
+  body.dark {
+    background: #292c35;
+  }
 
-.fa-moon {
-	color: #f1c40f;
-}
+  .main .bulletin .wrapper .logout .btn_logout{
+    font-size:18px;
+    font-weight:700 ;
+  }
+  body.dark .main .bulletin .wrapper .logout .btn_logout{
+      color:#fff;
+  }
 
-.fa-sun {
-	color: #f39c12;
-}
-.nav-container nav .right_wrapper{
-  display:flex;
-}
-.nav-container nav .right_wrapper .time{
-  margin-right:27px;
-}
+  body.dark .tabs li{
+        margin: 0 1rem;
+        font-size: 18px;
+        color: #fff;
+        transition: 0.3s;
+        font-weight: 700;
+  }
+  body.dark .tab.active{
+    border-bottom: 2px solid #fff;
+  }
+  .checkbox {
+    opacity: 0;
+    position: absolute;
+  }
 
-.main .bulletin .tab-content .home .home_wrapper .announcement_left,
-.main .bulletin .tab-content .events .event_wrapper .event,
-.main .bulletin .tab-content .about .about_wrapper .history_container,
-.main .bulletin .tab-content .contact .contact_wrapper .contact_form,
-.main .bulletin .tab-content .contact .contact_wrapper .help,
-.main .bulletin .tab-content .changepass .changepass_form{
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-}
+  .label {
+    background-color: #111;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    position: relative;
+    height: 26px;
+    width: 50px;
+    transform: scale(1.5);
+  }
+
+  .label .ball {
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    height: 22px;
+    width: 22px;
+    transform: translateX(0px);
+    transition: transform 0.2s linear;
+  }
+
+  .checkbox:checked + .label .ball {
+    transform: translateX(24px);
+  }
+
+  .fa-moon {
+    color: #f1c40f;
+  }
+
+  .fa-sun {
+    color: #f39c12;
+  }
+  .nav-container nav .right_wrapper{
+    display:flex;
+  }
+  .nav-container nav .right_wrapper .time{
+    margin-right:27px;
+  }
+
+  .main .bulletin .tab-content .home .home_wrapper .announcement_left,
+  .main .bulletin .tab-content .events .event_wrapper .event,
+  .main .bulletin .tab-content .about .about_wrapper .history_container,
+  .main .bulletin .tab-content .contact .contact_wrapper .contact_form,
+  .main .bulletin .tab-content .contact .contact_wrapper .help,
+  .main .bulletin .tab-content .changepass .changepass_form{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  }
 
 </style>
 </head>
@@ -529,21 +530,21 @@ body.dark .tab.active{
                           <img src="./img/announcement (1).png" alt="">
                           <h3>Quezon City University Announcement</h3>
                         </div>
-                  
-                        <div class="announce">
-                          <p>Quezon City University</p>
-                          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, quae error inventore repellendus perspiciatis deserunt accusamus, aliquam iure aperiam quo libero quam quidem? Corrupti dolorum, inventore reiciendis blanditiis et sequi.</p>
-                        </div>
-                        <div class="announce">
-                          <p>Quezon City University</p>
-                          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, quae error inventore repellendus perspiciatis deserunt accusamus, aliquam iure aperiam quo libero quam quidem? Corrupti dolorum, inventore reiciendis blanditiis et sequi.</p>
-                        </div>
-                        <div class="announce">
-                          <p>Quezon City University</p>
-                          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, quae error inventore repellendus perspiciatis deserunt accusamus, aliquam iure aperiam quo libero quam quidem? Corrupti dolorum, inventore reiciendis blanditiis et sequi.
-                          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, quae error inventore repellendus perspiciatis deserunt accusamus, aliquam iure aperiam quo libero quam quidem? Corrupti dolorum, inventore reiciendis blanditiis et sequi.
-                          </p>
-                        </div>
+                        <?php
+                          if(mysqli_num_rows($selAnnounceQ) > 0){ 
+                            while($rows = mysqli_fetch_assoc($selAnnounceQ)){ ?>
+                              
+                              <div class="announce">
+                                <p> <?=$rows['title']?> </p>
+                                <p> <?=$rows['announcement']?> </p>
+                              </div>
+                          <?php  } ?>
+                            
+                         
+
+                        <?php  }
+                        ?>
+                       
                       </div>
                     </div>
                 </div>
@@ -559,27 +560,23 @@ body.dark .tab.active{
                           <div class="activities">
                             <h3>University Week Activities</h3>
                             <div class="card_wrapper">
-                              <div class="card">
-                                <img src="./img/1.png" alt="">
-                                <div class="card_body">
-                                  <p>February 28, 2022</p>
-                                  <p>Thanks for giving mass online class kamustahan quiz bee(all program) tiktok competition</p>
-                                </div>
-                              </div>
-                              <div class="card">
-                                <img src="./img/1.png" alt="">
-                                <div class="card_body">
-                                  <p>February 28, 2022</p>
-                                  <p>Thanks for giving mass online class kamustahan quiz bee(all program) tiktok competition</p>
-                                </div>
-                              </div>
-                              <div class="card">
-                                <img src="./img/1.png" alt="">
-                                <div class="card_body">
-                                  <p>February 28, 2022</p>
-                                  <p>Thanks for giving mass online class kamustahan quiz bee(all program) tiktok competition</p>
-                                </div>
-                              </div>
+
+                            <?php
+                              if(mysqli_num_rows($selEventsQ) > 0){
+                                while($rows = mysqli_fetch_assoc($selEventsQ)){ ?>
+                                <div class="card">
+                                    <img src="./img/announce images/<?=$rows['image']?>" alt="">
+                                    <div class="card_body">
+                                      <p> <?=$rows['title']?></p>
+                                      <p> <?=$rows['announcement']?> </p>
+                                    </div>
+                                  </div>
+
+                        <?php }
+                              }
+                            ?>
+                              
+                             
                             </div>
                           </div>
                         </div>

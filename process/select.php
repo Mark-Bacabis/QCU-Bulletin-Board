@@ -24,8 +24,15 @@
    ORDER BY a.id DESC";
    $selLogQ = mysqli_query($con, $selLog);
 
+   
+
    //SELECT * ANNOUNCMENTS
-   $selAnnounce = "SELECT * FROM `tbl_announcements`";
+   $selAnnounce = "SELECT * FROM `tbl_announcements` WHERE `type` = 'Announcement'";
    $selAnnounceQ = mysqli_query($con, $selAnnounce);
+
+   // SELECT * EVENTS
+   $selEvents = "SELECT * FROM `tbl_announcements` WHERE `type` = 'Events'";
+   $selEventsQ = mysqli_query($con, $selEvents);
+
    
 ?>
