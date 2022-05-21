@@ -1,5 +1,5 @@
 <?php 
-  error_reporting(0);
+  error_reporting(1);
   include "../include/db_connection.php";
 
   session_start();
