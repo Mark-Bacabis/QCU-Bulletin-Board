@@ -42,6 +42,13 @@
     $cntAllEventQ = mysqli_query($con, "SELECT COUNT(*) as total FROM `tbl_announcements` WHERE type = 'Events';");
     $event = mysqli_fetch_assoc($cntAllEventQ);
 
+        // SELECT ALL ANNOUNCEMENT FROM FACULTIES
+     $selFacStat = mysqli_query($con, "SELECT u.fullname, fa.* FROM `faculty_announcment` fa
+     JOIN `users` u
+     ON fa.empID = u.empID
+     WHERE (fa.status = 'Approved' OR fa.status = 'Declined') AND fa.empID = '$empID' ");
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -355,7 +362,7 @@
             <!-- REQUEST -->
                <div class="request-container container">
                   <div class="title-header">
-                     <h2> </h2>
+                     <h2> Request </h2>
                      <hr>
                   </div>         
                   
@@ -422,7 +429,7 @@
             <!-- APPROVAL HISTORY -->
                <div class="request-container container">
                   <div class="title-header">
-                     <h2> </h2>
+                     <h2> Approval History </h2>
                      <hr>
                   </div>         
                   
