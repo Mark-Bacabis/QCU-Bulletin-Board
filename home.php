@@ -1,5 +1,5 @@
 <?php 
-  error_reporting(0);
+  // error_reporting(0);
   session_start();
   include './include/db_connection.php';
   include "./process/select.php";
@@ -8,22 +8,17 @@
   $fullname = $_SESSION['StudentName'];
   $course =  $_SESSION['course'];
 
-  
-
-
-
 
   
 
-  if ($_SESSION['status'] == 'invalid' || empty($_SESSION['status'])) {
-    /* Set status to invalid */
-    $_SESSION['status'] = 'invalid';
 
+
+
+  
+
+  if (empty($studID)) {
     /* Unset user data */
-    unset($_SESSION['username']);
-    unset($_SESSION['StudentName']);
-    unset($_SESSION['userid']);
-    unset($_SESSION['password']);
+    unset($studID);
 
     /* Redirect to login page */
     header("location:./student/login.php");
@@ -406,9 +401,10 @@
         margin: 0 1rem;
         font-size: 18px;
         color: #fff;
-        transition: 0.3s;
         font-weight: 700;
   }
+
+
   body.dark .tab.active{
     border-bottom: 2px solid #fff;
   }
@@ -513,10 +509,7 @@
               </ul>
               <div class="logout">
                 <div class="btn_logout">
-                   <?php
-                          echo ''.$_SESSION['StudentName'].'';
-                     
-                  ?>
+                   <?=$fullname?>
                   <i class='fas'>&#xf0d7;</i>
                 </div>
                
@@ -561,9 +554,18 @@
                           if(mysqli_num_rows($selAnnounceQ) > 0){ 
                             while($rows = mysqli_fetch_assoc($selAnnounceQ)){ ?>
                               
-                              <div class="announce">
+                              <div class="announce all">
                                 <p> <?=$rows['title']?> </p>
-                                <p> <?=$rows['announcement']?> </p>
+                                <div class="content">
+                                  <div class="text">
+                                    <p> <?=$rows['announcement']?> <span> <a href="<?=$rows['link']?>"><?=$rows['link']?></a> </span></p>
+                                  </div>
+                                  <div class="img">
+                                    <img src="./img/announce images/<?=$rows['image']?>" alt="">
+                                  </div>
+                                </div>
+                               
+                              
                               </div>
                           <?php  } ?>
                             
@@ -816,7 +818,7 @@
     const dropdown = document.querySelector('.dropdown')
     btn_logout.addEventListener('click', () => {
         dropdown.classList.toggle('active')
-    })
+    });
 
 
     // dark mode

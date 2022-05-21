@@ -5,7 +5,10 @@
    $position = $_SESSION['position'];
    $empID = $_SESSION['empID'];
 
-   
+   if($_SESSION['err'] === false){
+      unset($_SESSION['err']);
+      echo '<script> alert("Wrong Password/Username!") </script>';
+   }
 
    if(!empty($empID)){
       if($position == 'admin'){

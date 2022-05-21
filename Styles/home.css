@@ -7,6 +7,21 @@ html{
     font-family: 'Poppins', sans-serif;
 }
 
+
+::-webkit-scrollbar{
+    width: 6px;
+    margin: 10px;
+ }
+ 
+ ::-webkit-scrollbar-thumb{
+    background-color: rgba(0, 0, 0, 0.425);
+    border-radius: 12px;
+ }
+ ::-webkit-scrollbar-track{
+    margin: 10px;
+ }
+
+ 
 .nav-container{
     background: #fff;
     position: absolute;
@@ -167,7 +182,6 @@ html{
       margin: 0 1rem;
       font-size: 18px;
       color: #000;
-      transition: 0.3s;
       font-weight: 700;
   }
   .tabs li:hover{
@@ -224,9 +238,51 @@ html{
     margin-bottom: 10px;
     font-weight: 700;
 }
-.main .bulletin .tab-content .home .home_wrapper .announcement_left .announce{
+
+
+.main .bulletin .tab-content .home .home_wrapper .announcement_left .announce.all{
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
+.main .bulletin .tab-content .home .home_wrapper .announcement_left .announce.all .content{
+    display: flex;
+    justify-content: space-between;
+    background-color: #d6d6d6;
+    border-top: 2px solid rgb(109, 109, 109);
+    padding: 5px 10px;
+}
+.main .bulletin .tab-content .home .home_wrapper .announcement_left .announce.all .text{
+    width: 65%;
+    height: max-content;
+}
+
+.main .bulletin .tab-content .home .home_wrapper .announcement_left .announce.all .text p{
+    font-size: .9em;
+    font-weight: normal;
+}
+.main .bulletin .tab-content .home .home_wrapper .announcement_left .announce.all .text p span{
+   font-size: .8em;
+}
+
+.main .bulletin .tab-content .home .home_wrapper .announcement_left .announce.all .img{
+    width: 40%;
+    height: 100px;
+    background-color: antiquewhite;
+    margin-left: 10px;
+}
+
+.main .bulletin .tab-content .home .home_wrapper .announcement_left .announce.all .img img{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+
+
 .main .bulletin .tab-content .home .home_wrapper .announcement_left .announce p:nth-child(1){
      color: #002347;
      font-weight: 600;

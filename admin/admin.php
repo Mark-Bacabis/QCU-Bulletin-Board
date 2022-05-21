@@ -386,7 +386,7 @@
                              
                               <th> stud id </th>
                               <th> Fullname </th>
-                              <th> Email </th>
+                              <th> Status </th>
                               <th> Course </th>
                               <!-- <th> YL</th> -->
                            
@@ -397,10 +397,10 @@
                            while($rows = mysqli_fetch_array($selectedStud)){ ?>
                            <tr>
                             
-                              <td> <?=$rows['studentId']?></td>
-                              <td> <?=$rows['StudentName']?></td>
-                              <td> <?=$rows['email']?> </td>
-                              <td> <?=$rows['course']?> </td>
+                              <td> <?=$rows['Student_ID']?></td>
+                              <td> <?=$rows['Given_Name']?> <?=$rows['Middle_Name']?> <?=$rows['Surname']?></td>
+                              <td> <?=$rows['Status']?> </td>
+                              <td> <?=$rows['Course']?> </td>
                               <!-- <td> <?=$rows['Dept']?> </td> -->
                            </tr>
 
@@ -435,7 +435,8 @@
                         if(mysqli_num_rows($selLogQ) > 0){
                            while($log = mysqli_fetch_assoc($selLogQ)){?>
                               <tr>
-                                 <td> <?=$log['id']?></td>
+                                 <td> <?=$log['schoolID']?></td>
+                               
                                  <td> <?=$log['fullname']?> <?=$log['activity']?> </td>
                                  <td> <?=$log['date']?> <?=$log['time']?></td>
                               </tr>

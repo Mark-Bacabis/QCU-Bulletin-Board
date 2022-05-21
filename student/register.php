@@ -1,19 +1,5 @@
 <?php 
   session_start();
-
-  /* Functions */
-  function pathTo($destination) {
-    echo "<script>window.location.href = '/qcu_bulletin/$destination.php'</script>";
-  }
-
-  if ($_SESSION['status'] == 'invalid' || empty($_SESSION['status'])) {
-    /* Set Default Invalid */
-    $_SESSION['status'] = 'invalid';
-  }
-
-  if ($_SESSION['status'] == 'valid') {
-    pathTo('home');
-  }
 ?>
 
 <!DOCTYPE html>

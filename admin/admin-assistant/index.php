@@ -3,12 +3,23 @@
    session_start();
 
    
+   
    include "../../include/db_connection.php";
    include "../../process/function.php";
    include "../../process/select.php";
    include "../../process/count.php";
 
    $empID = $_SESSION['empID'];
+
+   
+   if (empty($empID)) {
+      /* Unset user data */
+      unset($empID);
+
+      /* Redirect to login page */
+      header("location: ../index.php");
+  }
+  
    
    // SELECT SUPER ADMIN WHERE...
    $selAdmin = "SELECT * FROM `users` WHERE `position` = 'admin' AND `empID` = $empID";
@@ -17,10 +28,19 @@
 
    // SELECT ANNOUNCMENT 
    $selAnnounce = mysqli_query($con, "SELECT * FROM `tbl_announcements` WHERE `type` = 'Announcement' ORDER BY `tbl_announcements`.`id` DESC");
-   
-   if(empty($empID)){
-      header("location:./index.php");
-   }
+
+
+   // SELECT ALL PENDING ANNOUNCEMENTS
+   $cntPendQ = mysqli_query($con, "SELECT COUNT(*) as total FROM `faculty_announcment` WHERE status = 'Pending';");
+   $pending = mysqli_fetch_assoc($cntPendQ);
+
+   // SELECT OVERALL ANNOUNCEMENT
+   $cntAllAnnouncementQ = mysqli_query($con, "SELECT COUNT(*) as total FROM `tbl_announcements` WHERE type = 'Announcement';");
+   $announcement = mysqli_fetch_assoc($cntAllAnnouncementQ);
+
+    // SELECT OVERALL ANNOUNCEMENT
+    $cntAllEventQ = mysqli_query($con, "SELECT COUNT(*) as total FROM `tbl_announcements` WHERE type = 'Events';");
+    $event = mysqli_fetch_assoc($cntAllEventQ);
 
 ?>
 <!DOCTYPE html>
@@ -48,7 +68,7 @@
    <!--AJAX-->
    <script src="../../ajax/events.js"> </script>
    <script src="../../ajax/announce-details.js"></script>
-   <script src="../../ajax/status-announce.js"></script>
+
 <body>
    <main>
       <section class="left-dashboard">
@@ -115,27 +135,27 @@
                                  <img src="../../icon/student-with-graduation-cap.png" alt="">
                               </div>
                               <div class="summary-info">
-                                 <h1 class="total"> 42 </h1>
+                                 <h1 class="total"> <?=$pending['total']?> </h1>
                                  <p class="summary-title"> Pending Request</p>
                               </div>
                            </div>
 
                            <div class="summary-box dept-head">
                               <div class="icon">
-
+                                 <img src="../../icon/loudspeaker.png" alt="">
                               </div>
                               <div class="summary-info">
-                                 <h1 class="total"> 42 </h1>
+                                 <h1 class="total"> <?=$announcement['total']?> </h1>
                                  <p class="summary-title"> Announcements </p>
                               </div>
                            </div>
 
                            <div class="summary-box admin-assist">
                               <div class="icon">
-
+                                 <img src="../../icon/loudspeaker.png" alt="">
                               </div>
                               <div class="summary-info">
-                                 <h1 class="total"> 42 </h1>
+                                 <h1 class="total"> <?=$event['total']?> </h1>
                                  <p class="summary-title"> Events </p>
                               </div>
                            </div>
@@ -154,7 +174,8 @@
                            
                                  <div class="announcement">
                                     <h1 class="title"> <?=$rows['title']?></h1>
-                                    <p> <?=$rows['announcement']?></p>
+                                    <p> <?=$rows['announcement']?> </p>
+                                    <a href="<?=$rows['link']?>" style="font-size: .8em"> <?=$rows['link']?></a>
                                  </div>
                                  
                            
@@ -338,11 +359,7 @@
                      <hr>
                   </div>         
                   
-                  <div class="request">
-                     <div class="result">
-                        <p> Result: 3 </p>
-                     </div>
-                  
+                  <div class="request">                  
                      <table border="0">
                         <tr>
                            <th> emp id </th>
@@ -460,7 +477,7 @@
             </div>
 
             <div class="icon-setting">
-               <a href="#">
+               <a href="../logout.php">
                   <img src="../../icon/power-off.png" alt="">
                </a> 
             </div>
@@ -525,5 +542,6 @@
 <script src="../../Javascript/admin-assist.js"></script>
 <script src="../../Javascript/calendar.js"></script>
 <script src="../../Javascript/dateNow.js"></script>
+<script src="../../Javascript/eventsButton.js"></script>
 
 </html>

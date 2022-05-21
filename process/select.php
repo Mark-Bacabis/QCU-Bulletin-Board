@@ -12,7 +12,11 @@
    $selFaculty = mysqli_query($con, $selDept);
 
    // SELECT ALL STUDENTS
-   $selStud = "SELECT * FROM `stud_accounts`";
+   $selStud = "SELECT * FROM `stud_accounts` a 
+   JOIN `student` b
+   ON a.studentId = b.Student_ID
+   JOIN `student_status` c
+   ON a.studentId = c.Student_ID";
    $selectedStud = mysqli_query($con, $selStud);
 
 
@@ -46,15 +50,6 @@
      ON fa.empID = u.empID
      WHERE fa.status = 'Approved' OR fa.status = 'Declined' ");
 
-
-    $selFacApp = mysqli_query($con, "SELECT u.fullname, fa.* FROM `faculty_announcment` fa
-    JOIN `users` u
-    ON fa.empID = u.empID
-    WHERE fa.status = 'Approved'");
-
-
-     
-  
 
    
 ?>

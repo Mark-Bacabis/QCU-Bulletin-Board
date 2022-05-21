@@ -2,7 +2,6 @@
     include "../include/db_connection.php";
 
   if (isset($_POST["create"])) {
-
     $username = $_POST['username'];
     $password = $_POST['password'];
     $confirmpassword= $_POST['confirmpassword'];
@@ -27,7 +26,7 @@
 
           if($insStud){
             echo '<script> alert("Account created successfully.") </script>';
-            echo '<script> window.location.href = "./register.php" </script>';
+            echo '<script> window.location.href = "./login.php" </script>';
           }
         } else{
             echo "<script> alert('This student id $username does not exist.') </script>";

@@ -1,12 +1,12 @@
 <?php 
-  error_reporting(1);
-  include "../include/db_connection.php";
-
+  // error_reporting(0);
   session_start();
   
+  include "../include/db_connection.php";
+
   if (isset($_POST['login'])) {
-    $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
     if (empty($username) || empty($password)) {
       // echo "Please fill up all fields";
@@ -20,11 +20,9 @@
       $sqlValidate = mysqli_query($con, $queryValidate);
       $rowValidate = mysqli_fetch_array($sqlValidate);
 
-      if (mysqli_num_rows($sqlValidate) === 1) {
+      if (mysqli_num_rows($sqlValidate) == 1) {
         
-        $_SESSION['userid'] = $rowValidate['StudentID'];
-        $_SESSION['password'] = $rowValidate['password'];
-        $_SESSION['username'] = $rowValidate['studentId'];
+        $_SESSION['userid'] = $rowValidate['Student_ID'];
         $_SESSION['StudentName'] = $rowValidate['Given_Name']." ".$rowValidate['Middle_Name']." ".$rowValidate['Surname'];
         $_SESSION['course'] = $rowValidate['Course'];
         

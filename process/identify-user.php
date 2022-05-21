@@ -11,7 +11,7 @@
       $selUser = mysqli_query($con, "SELECT * FROM `users_account` a 
       JOIN `users` b 
       ON a.empID = b.empID
-      WHERE a.empID = $user AND a.password = '$pass';");
+      WHERE a.empID = '$user' AND a.password = '$pass';");
 
       if(mysqli_num_rows($selUser) == 1){
          $userStats = mysqli_fetch_assoc($selUser);
@@ -38,9 +38,10 @@
             actLog($schoolID, $activity, $date, $time);
             header("location: ../admin/admin-assistant/index.php");
          }
-         else{
-            header("location: ../admin/index.php");
-         }
+        
+      } else {
+         $_SESSION['err'] = false; 
+         header("location: ../admin/index.php");
       }
    }
 ?>

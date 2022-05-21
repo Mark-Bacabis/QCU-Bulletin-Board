@@ -5,13 +5,7 @@ $(document).ready(function(){
          announceBtn:announceBtn,
       });
    });
-   $('#news').click(function(){
-      var newsBtn = $('#news').val();
-      $('#output-container').load('process/events.php', {
-         newsBtn:newsBtn
-      });
-   });
-
+   
    $('#events').click(function(){
       var eventsBtn = $('#events').val();
       $('#output-container').load('process/events.php', {

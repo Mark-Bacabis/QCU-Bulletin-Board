@@ -12,6 +12,21 @@
     --loginText:#707070;
 }
 
+
+::-webkit-scrollbar{
+  width: 6px;
+  margin: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: rgba(0, 0, 0, 0.425);
+  border-radius: 12px;
+}
+::-webkit-scrollbar-track{
+  margin: 10px;
+}
+
+
 /*  Header  */
 .header{
     background-color: #002347;
@@ -20,6 +35,7 @@
     display: flex;
     align-items: center;
     padding: 0 5%;
+    position: relative;
 }
 .header .logo {
     height: 60px;
@@ -45,6 +61,107 @@
 }
 
 
+
+.header .logout{
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translate(0, -50%);
+  
+}
+
+.logout .dropdown{
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 5px;
+  min-width: 100px;
+  width: max-content;
+  line-height: 32px;
+  overflow: hidden;
+}
+
+.logout .dropdown a{
+  text-decoration: none;
+  color: #000;
+  width: 100%;
+  text-align: center;
+}
+
+.logout .dropdown a:hover{
+  background-color: #0023474d;
+}
+
+.logout .dropdown.active{
+  display: flex;
+}
+.logout .dropdown .changepass{
+  font-size: 14px;
+  cursor: pointer;
+  padding: 10px 15px;
+}
+
+.logout .dropdown .logout_btn{
+  width: 100%;
+}
+
+.logout .dropdown .logout_btn .log_btn{
+  outline: none;
+  border: none;
+  background: none;
+  font-size: 14px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  padding: 10px 15px;
+}
+
+.logout .dropdown .changepass:hover,
+.logout .dropdown .logout_btn .log_btn:hover{
+  background: #002347;
+  color: #fff;
+}
+
+
+.logout .btn_logout{
+  cursor: pointer;
+  padding: 5px 10px;
+  font-size: 18px;
+  filter: invert(1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: max-content;
+}
+.logout .btn_logout p{
+  margin: 0 10px;
+}
+.logout .btn_logout .profile{
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  border-radius: 50%;
+  filter: invert(1);
+}
+
+.logout .btn_logout .profile img{
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+
+
+
+
 main{
   height: 88vh;
   width: 100%;
@@ -52,6 +169,10 @@ main{
   flex-direction: column;
   overflow: hidden;
   background-color: rgb(210, 210, 210);;
+}
+
+main .selected{
+  border-bottom: 3px solid var(--headerColor);
 }
 
 main .topnav{
@@ -63,6 +184,7 @@ main .topnav{
 
 main .topnav a{
   text-decoration: none;
+  color: var(--headerColor);
 }
 
 main .container{
@@ -81,6 +203,7 @@ main .container .content{
   margin: 0 2%;
   overflow-y: scroll;
   padding: 2%;
+  border-radius: 7px;
 }
 
 main .container .content.home1-content{
@@ -125,6 +248,35 @@ main .container .content .announce .img img{
 
 
 
+main .container .announce-content{
+  overflow: hidden;
+  border-radius: 7px;
+  padding: 2% 4%;
+}
+
+
+main .container .announce-content form textarea{
+  padding: 10px;
+  outline: none;
+  font-size: 1em;
+  resize: none;
+  width: 100%;
+  height: 280px;
+  margin-top: 20px;
+}
+
+main .container .announce-content form input{
+  display: flex;
+  float: right;
+  background-color: var(--headerColor);
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 1em;
+  margin-top: 10px;
+}
+
 
 
 
@@ -147,140 +299,3 @@ main .container .content .announce .img img{
 
 
 /*  announcement page - announcement content  */
-  .container .announce-content{
-    display: flex;
-    margin: auto;
-    width: 55vw;
-    height: 32vw;
-    background-color:#ffffff;
-    border-radius: 5px;
-    align-items: center;
-    justify-content: center;
-}
-
-  .container .announce-content form input[name='title']{
-    width: 350px;
-    height: 35px;
-  }
-
-  .container .announce-content form input[name='url']{
-    width: 290px;
-    height: 35px;
-  }
-
-  .container .announce-content form textarea {
-    width: 620px;
-    height: 260px;
-  }
-
-  .container .announce-content form input[type='file']{
-    width: 200px;
-    font-size: .9em;
-    padding: 8px;
-    margin-left: 34px;
-  }
-
-  .container .announce-content form input[type='submit']{
-    background: #002347;
-    color: #fff;
-    font-size: 1em;
-    font-weight: 500;
-    letter-spacing: 1px;
-    padding: 3px 10px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    margin-left: 23px;
-    margin-top: 18px;
-    transition: background ease .3s;
-  }
-  
-
-
-/*  change pass page  */
-  .container .pass-content{
-    margin-top: 80px;
-    display: flex;
-    margin-left: 310px;
-    width: 32vw;
-    height: 25vw;
-    background-color:#ffffff;
-    border-radius: 5px;
-    align-items: center;
-    justify-content: center;
-}
-
-.container .pass-content section h3{
-    margin-bottom: -10px;
-    margin-top: -5px;
-    letter-spacing: 1px;
-}
-
-.container .pass-content section form label{
-    letter-spacing: 2px;
-    font-size: 14px;
-}
-
-.container .pass-content section form label span{
-    letter-spacing: 2px;
-    font-size: 10px;
-    color: #b6b5b5;
-}
-
-.container .pass-content section form input{
-    height: 35px;
-    width: 350px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    border-radius: 5px;
-    border: 1px solid black;
-    padding-left: 7px;
-    font-size: 16px;
-}
-
-.container .pass-content section form input[type='submit']{
-    background: #11af2c;
-    width: 120px;
-    color: #fff;
-    font-size: 1em;
-    font-weight: 500;
-    letter-spacing: 1px;
-    padding: 3px 10px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    margin-left: 228px;
-    margin-top: 7px;
-    transition: background ease .3s;
-  }
-  
-
-
-/*  change pass page - change profile  */
-.container .pass1-content{
-    display: flex;
-    margin-top: -342px;
-    margin-left: 770px;
-    width: 21vw;
-    height: 25vw;
-    background-color:#ffffff;
-    border-radius: 5px;
-    align-items: center;
-    justify-content: center;
-}
-
-.container .pass1-content form img{
-    margin-left: 90px;
-    height: 100px;
-    width: 100px;
-    border-radius: 150px;
-    border: 1px solid black;
-    margin-bottom: 20px;
-}
-
-.container .pass1-content form input[type='file']{
-    width: 200px;
-    font-size: .9em;
-    padding: 8px;
-    margin-left: 47px;
-  }
