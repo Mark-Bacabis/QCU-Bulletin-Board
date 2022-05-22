@@ -18,7 +18,7 @@
          $schoolID = $userStats['empID'];
          $activity = "Logged in";
          $date = date('Y-m-d');
-         $time = date('H:i:s A');      
+         $time = date('H:i:s A'); 
         
 
          if($userStats['position'] === 'main admin'){
