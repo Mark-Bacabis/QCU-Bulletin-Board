@@ -1,8 +1,8 @@
 <?php 
   // error_reporting(0);
   session_start();
-  
   include "../include/db_connection.php";
+  include "../process/function.php";
 
   if (isset($_POST['login'])) {
     $username = $_POST['username'];
@@ -25,7 +25,13 @@
         $_SESSION['userid'] = $rowValidate['Student_ID'];
         $_SESSION['StudentName'] = $rowValidate['Given_Name']." ".$rowValidate['Middle_Name']." ".$rowValidate['Surname'];
         $_SESSION['course'] = $rowValidate['Course'];
-        
+
+        $schoolID = $rowValidate['Student_ID'];
+        $activity = "Logged in";
+        $date = date('Y-m-d');
+        $time = date('H:i:s A');      
+
+        actLog($schoolID, $activity, $date, $time);
         header("location: ../home.php");
 
       } else {
