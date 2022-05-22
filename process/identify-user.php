@@ -17,9 +17,8 @@
          $userStats = mysqli_fetch_assoc($selUser);
          $schoolID = $userStats['empID'];
          $activity = "Logged in";
-         $date = date('Y-m-d');
-         $time = date('H:i:s A'); 
-        
+         $fullname = $userStats['fullname'];
+         $_SESSION['fullname'] = $fullname;
 
          if($userStats['position'] === 'main admin'){
             $_SESSION['empID'] = $userStats['empID'];
@@ -29,13 +28,13 @@
          else if($userStats['position'] === 'faculty'){
             $_SESSION['empID'] = $userStats['empID'];
             $_SESSION['position'] = $userStats['position'];
-            actLog($schoolID, $activity, $date, $time);
+            actLog($schoolID, $activity, $fullname);
             header("location: ../admin/faculty/adminHome.php");
          }
          else if($userStats['position'] === 'admin'){
             $_SESSION['empID'] = $userStats['empID'];
             $_SESSION['position'] = $userStats['position'];
-            actLog($schoolID, $activity, $date, $time);
+            actLog($schoolID, $activity, $fullname);
             header("location: ../admin/admin-assistant/index.php");
          }
         

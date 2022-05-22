@@ -28,15 +28,12 @@
 
         $schoolID = $rowValidate['Student_ID'];
         $activity = "Logged in";
-        $date = date('Y-m-d');
-        $time = date('H:i:s A');      
-
-        actLog($schoolID, $activity, $date, $time);
+        $fullname = $_SESSION['StudentName'];
+        
+        actLog($schoolID, $activity, $fullname);
         header("location: ../home.php");
 
       } else {
-        $_SESSION['status'] = 'invalid';
-
         echo '<script>alert("Invalid Credential!")</script>';
       }
     }

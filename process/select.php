@@ -22,10 +22,7 @@
 
 
    // SELECT ACTIVITY LOGS
-   $selLog = "SELECT a.id, a.schoolID, a.activity, a.date, a.time, b.fullname FROM `activity_log` a 
-   JOIN `users` b
-   ON b.empID = a.schoolID
-   ORDER BY a.id DESC";
+   $selLog = "SELECT * FROM `activity_log` ORDER BY `id` DESC";
    $selLogQ = mysqli_query($con, $selLog);
 
    

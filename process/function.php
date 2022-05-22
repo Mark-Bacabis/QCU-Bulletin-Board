@@ -68,10 +68,12 @@ function DelHead($empID){
 }
 
 
-function actLog($schoolID, $activity, $date, $time){
+function actLog($schoolID, $activity, $fullname){
    include "../include/db_connection.php";
+   $date = date('Y-m-d');
+   $time = date('H:i:s A');      
 
-   $ins = "INSERT INTO `activity_log`(`schoolID`, `activity`, `date`, `time`) VALUES ('$schoolID','$activity', '$date', '$time')";
+   $ins = "INSERT INTO `activity_log`(`schoolID`, `fullname`, `activity`, `date`, `time`) VALUES ('$schoolID','$fullname','$activity','$date','$time')";
    mysqli_query($con, $ins);
 
 }

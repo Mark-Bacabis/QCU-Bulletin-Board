@@ -3,10 +3,9 @@
    include "../process/function.php";
    $schoolID = $_SESSION['empID'];  
    $activity = "Logged out";  
-   $date = date('Y-m-d');
-   $time = date('H:i:s A');     
+   $fullname = $_SESSION['fullname'];
 
-   actLog($schoolID, $activity, $date, $time);
+   actLog($schoolID, $activity, $fullname);
 
    unset($_SESSION['empID']);
    header("location: ./index.php");
