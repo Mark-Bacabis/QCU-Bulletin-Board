@@ -113,7 +113,7 @@
             <div class="logout">
                 <div class="btn_logout">
                     <div class="profile">
-                        <img src="../admin-profile/<?=$fname['avatar']?>" alt="">
+                        <img src="../admin-profile/<?=$admin['avatar']?>" alt="">
                     </div>
                     <p> <?=$admin['fullname']?> </p>
                     <i class='fas'>&#xf0d7;</i>
@@ -162,7 +162,7 @@
                <h2> Change Profile </h2>
 
                <div class="profile">
-                  <img id="user" src="../profile/<?=$prof['profile']?>" alt="">
+                  <img id="user" src="../admin-profile/<?=$admin['avatar']?>" alt="">
                </div>
 
                <form action="../../process/changeFaculty.php" method="POST" enctype="multipart/form-data">
@@ -170,12 +170,9 @@
                   <div class="form-button">
                      <input type="submit" value="Change profile" name="changeProfile">
                   </div>          
-               </form>
-                    
+               </form>  
             </div>
-            
         </div>
-
     </main>
 </body>
 <script>

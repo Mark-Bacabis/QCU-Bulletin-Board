@@ -2,11 +2,17 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    outline: none;
 }
+
+input{
+    padding: 5px 10px;
+    font-size: 1em;
+}
+
 html{
     font-family: 'Poppins', sans-serif;
 }
-
 
 ::-webkit-scrollbar{
     width: 6px;
@@ -21,6 +27,153 @@ html{
     margin: 10px;
  }
 
+
+/* DARK MODE */
+body.dark{
+    background-color: #56585D;
+}
+
+body.dark .nav-container{
+    background: #38393C;
+}
+
+body.dark .nav-container nav .logo h3{
+    color: rgb(255, 255, 255);
+}
+
+body.dark .nav-container nav .right_wrapper .time{
+    color: #ffffffa1;
+}
+
+body.dark .tabs li{
+    color: rgb(206, 206, 206);
+}
+body.dark .tabs li:hover{
+    color: #ffffff;
+}
+
+body.dark .main .bulletin .wrapper .logout .btn_logout{
+    color: #ffffff;
+}
+
+
+body.dark .main .bulletin .tab-content .home .home_wrapper .announcement_left{
+    background: #2b2b2b;
+}
+body.dark .main .bulletin .tab-content .home .home_wrapper .announcement_left h3{
+    color: #fff;
+}
+
+body.dark .main .bulletin .tab-content .home .home_wrapper .announcement_left .announce.all .content{
+    background-color: #56585D;
+    border-top: 2px solid rgb(104, 107, 114)
+}
+
+body.dark .main .bulletin .tab-content .home .home_wrapper .announcement_left .announce p:nth-child(1){
+    color: #c7d6e6;
+}
+
+body.dark .main .bulletin .tab-content .home .home_wrapper .announcement_left .announce.all .text p span a{
+    color: rgb(212, 212, 212);
+}
+
+
+
+body.dark .main .bulletin .tab-content .events .event_wrapper .event {
+    background: #2b2b2b;
+}
+
+body.dark .main .bulletin .tab-content .events .event_wrapper .event .title_wrapper h3{
+    color: #fff;
+}
+
+
+body.dark .main .bulletin .tab-content .events .event_wrapper .event .activities h3{
+    border-bottom: 2px solid #d4d8dd;
+    color: #d4d8dd;
+}
+
+
+body.dark .main .bulletin .tab-content .events .event_wrapper .event .activities .card_wrapper{
+    color: #fff;
+}
+
+body.dark .main .bulletin .tab-content .events .event_wrapper .event h2{
+    color: #fff;
+}
+
+body.dark .main .bulletin .tab-content .events .event_wrapper .event .title_list p{
+    color: #fff;
+}
+
+body.dark .main .bulletin .tab-content .events .event_wrapper .event .list_date li span{
+    color: #fff;
+}
+
+
+body.dark .main .bulletin .tab-content .about .about_wrapper .history_container{
+    background:#2b2b2b;
+}
+
+
+body.dark .main .bulletin .tab-content .about .about_wrapper .history_container h3{
+    color: #fff;
+}
+
+
+body.dark .main .bulletin .tab-content .about .about_wrapper .history_container .qcu_wrapper{
+    color: #fff;
+}
+
+
+
+body.dark .main .bulletin .tab-content .about .about_wrapper .mission_container{
+    background:#2b2b2b;
+}
+
+
+body.dark .main .bulletin .tab-content .about .about_wrapper .mission_container .card {
+    background-color: #56585D;;
+    color: #fff;
+}
+
+
+body.dark .main .bulletin .tab-content .about .campuses h3{ 
+    color: rgb(255, 255, 255);
+   
+}
+body.dark .main .bulletin .tab-content .about .campuses .campuses_card_wrapper .campuses_card {
+  background:#2b2b2b;
+  color: #fff;
+}
+
+body.dark .main .bulletin .tab-content .about .executive h3{ 
+    color: #fff
+}
+body.dark .main .bulletin .tab-content .about .executive .executive_card_wrapper .executive_card {
+    background:#2b2b2b;
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* LIGHT MODE */
  
 .nav-container{
     background: #fff;
@@ -67,8 +220,8 @@ html{
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
+
 .nav-container nav .right_wrapper .time span:nth-child(2){
     /* display: block; */
     height: 20px;
@@ -148,7 +301,10 @@ html{
     cursor: pointer;
     padding: 5px 10px;
     font-size: 18px;
+    
 }
+
+
 .main .bulletin h3{
 
     font-weight: lighter;
@@ -249,10 +405,11 @@ html{
 .main .bulletin .tab-content .home .home_wrapper .announcement_left .announce.all .content{
     display: flex;
     justify-content: space-between;
-    background-color: #d6d6d6;
+    background-color: #dddddd;
     border-top: 2px solid rgb(109, 109, 109);
     padding: 5px 10px;
 }
+
 .main .bulletin .tab-content .home .home_wrapper .announcement_left .announce.all .text{
     width: 65%;
     height: max-content;
@@ -269,7 +426,6 @@ html{
 .main .bulletin .tab-content .home .home_wrapper .announcement_left .announce.all .img{
     width: 40%;
     height: 100px;
-    background-color: antiquewhite;
     margin-left: 10px;
 }
 
@@ -289,6 +445,7 @@ html{
      font-size: 17px;
      margin-bottom: 10px;
 }
+
 .main .bulletin .tab-content .home .home_wrapper .announcement_left .announce p:nth-child(2){
     background: rgb(212, 212, 212);
     padding: 15px;
@@ -323,6 +480,7 @@ html{
     width: 50px;
     margin-right: 15px;
 }
+
 .main .bulletin .tab-content .events .event_wrapper .event .title_wrapper h3{
     color: #000;
     padding: 0;
@@ -330,6 +488,7 @@ html{
     font-weight: 700;
 
 }
+
 .main .bulletin .tab-content .events .event_wrapper .event .title_wrapper{
     padding-bottom: 20px ;
     display: flex;
@@ -344,6 +503,8 @@ html{
     text-align: left;
     padding: 0;
 }
+
+
 .main .bulletin .tab-content .events .event_wrapper .event .activities .card_wrapper{
 display: grid;
 grid-template-columns: 1fr 1fr 1fr;
@@ -406,6 +567,7 @@ grid-gap: 10px;
 .main .bulletin .tab-content .about .about_wrapper .history_container .qcu_wrapper{
     display: flex;
     margin-bottom:40px;
+    padding: 0 5%;
 }
 .main .bulletin .tab-content .about .about_wrapper .history_container .qcu_wrapper img{
     height: auto;
@@ -416,6 +578,7 @@ grid-gap: 10px;
 }
 .main .bulletin .tab-content .about .about_wrapper .history_container .qcu_wrapper{
   font-size:15px;
+  text-align: justify;
 }
 .main .bulletin .tab-content .about .about_wrapper .history_container h3{
     font-weight: 600;
@@ -434,7 +597,7 @@ grid-gap: 10px;
     background:#fff;
 }
 .main .bulletin .tab-content .about .about_wrapper .mission_container .card{
-  background: rgb(240, 240, 240);
+  background: rgb(148, 58, 58);
   padding:15px;
   border-radius:8px;
   height:100%;
@@ -494,6 +657,8 @@ grid-gap: 10px;
   font-weight:bold;
   margin-bottom:15px;
 }
+
+
 /* executive */
 .main .bulletin .tab-content .about .executive{ 
     width: 100%;

@@ -758,11 +758,10 @@ section.center-information .center-header p span:first-child{
 /* ACTIVITY LOG */
 .act-log-container{
    width: 100%;
-   height: 100%;
+   height: 95%;
    padding: 0 4%;
    display: none;
    flex-direction: column;
-   
 }
 
 .act-log-container .date-act{
@@ -771,12 +770,16 @@ section.center-information .center-header p span:first-child{
   
 }
 
+.act-log-container .tbl{
+   overflow-y: scroll;
 
+}
 .act-log-container table{
    width: 100%;
    font-size: .85em;
    margin-top: 10px;
    text-align: left;
+   overflow-y: scroll;
 }
 
 .act-log-container table tr th{

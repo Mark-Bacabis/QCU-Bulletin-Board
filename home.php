@@ -8,14 +8,6 @@
   $fullname = $_SESSION['StudentName'];
   $course =  $_SESSION['course'];
 
-
-  
-
-
-
-
-  
-
   if (empty($studID)) {
     /* Unset user data */
     unset($studID);
@@ -385,29 +377,6 @@
   }
 
 
-  body.dark {
-    background: #292c35;
-  }
-
-  .main .bulletin .wrapper .logout .btn_logout{
-    font-size:18px;
-    font-weight:700 ;
-  }
-  body.dark .main .bulletin .wrapper .logout .btn_logout{
-      color:#fff;
-  }
-
-  body.dark .tabs li{
-        margin: 0 1rem;
-        font-size: 18px;
-        color: #fff;
-        font-weight: 700;
-  }
-
-
-  body.dark .tab.active{
-    border-bottom: 2px solid #fff;
-  }
   .checkbox {
     opacity: 0;
     position: absolute;
@@ -471,7 +440,7 @@
 
 <body>
 
-<div class="nav-container">
+  <div class="nav-container">
     <nav>
       <div class="logo">
         <img src="./img/QCU_Logo_2019 (1).png" alt="">
@@ -649,7 +618,8 @@
                         <img src="./img/about2.jpg" alt="sad">
                         <p>On August 20, 1997, the Polytechnic was enhanced into a University through City Council Ordinance No. SP-544, S-97. The leadership of former Quezon City Mayor Feliciano “Sonny” Belmonte saw meaningful access to higher education. Starting 2005-2006, the University has started offering degree programs. Initially, the courses are BS in Entrepreneurial Management, BS in Information Technology, and BS in Industrial Engineering. SP-1945, s. 2009, otherwise known as “An Ordinance Amending Ordinance No. SP1030, s. 2001 (or the QCPU Charter)”, passed by the Quezon City Council, grants the Quezon City Polytechnic University semi-autonomy as to its fiscal management and control over its operations, budgeting and reporting requirements. Under the Ordinance SP-2308 s. 2014, the QC Council authorizes the University to offer the Senior High School Program as mandated by the Department of Education. In July 2019, the SP-2812 s.2019 or the “Ordinance converting the Quezon City Polytechnic University to Quezon City University and enhancing its charter” was fully implemented, with Dr. Victor B. Endriga being named as the OIC President of the University.</p>
                       </div>
-                    </div>    
+                    </div>  
+                      
                     <div class="mission_container">
                         <div class="card">
                           <h4>Mission</h4>

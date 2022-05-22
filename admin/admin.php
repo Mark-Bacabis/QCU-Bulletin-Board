@@ -1,5 +1,5 @@
 <?php
-   error_reporting(0);
+   // error_reporting(0);
    session_start();
    
    
@@ -14,8 +14,37 @@
    $selAdmin = "SELECT * FROM `users` WHERE `position` = 'main admin' AND `empID` = $empID";
    $selectedAdmin = mysqli_query($con, $selAdmin);
    $superAdmin = mysqli_fetch_assoc($selectedAdmin);
-  
-   
+
+   // COUNT ALL BSIT STUDENTS
+   $cntBSITQ = mysqli_query($con, "SELECT COUNT(*) AS total FROM `student_status` ss 
+   JOIN `stud_accounts` sa 
+   ON ss.Student_ID = sa.studentId WHERE ss.Course = 'BSIT';");
+   $cntBSIT = mysqli_fetch_assoc($cntBSITQ);
+
+    // COUNT ALL BSA STUDENTS
+    $cntBSAQ = mysqli_query($con, "SELECT COUNT(*) AS total FROM `student_status` ss 
+    JOIN `stud_accounts` sa 
+    ON ss.Student_ID = sa.studentId WHERE ss.Course = 'BSA';");
+    $cntBSA = mysqli_fetch_assoc($cntBSAQ);
+
+     // COUNT ALL BSECE STUDENTS
+   $cntBSECEQ = mysqli_query($con, "SELECT COUNT(*) AS total FROM `student_status` ss 
+   JOIN `stud_accounts` sa 
+   ON ss.Student_ID = sa.studentId WHERE ss.Course = 'BSECE';");
+   $cntBSECE = mysqli_fetch_assoc($cntBSECEQ);
+
+    // COUNT ALL BSENT STUDENTS
+    $cntBSENTQ = mysqli_query($con, "SELECT COUNT(*) AS total FROM `student_status` ss 
+    JOIN `stud_accounts` sa 
+    ON ss.Student_ID = sa.studentId WHERE ss.Course = 'BSENT';");
+    $cntBSENT = mysqli_fetch_assoc($cntBSENTQ);
+
+     // COUNT ALL BSIE STUDENTS
+   $cntBSIEQ = mysqli_query($con, "SELECT COUNT(*) AS total FROM `student_status` ss 
+   JOIN `stud_accounts` sa 
+   ON ss.Student_ID = sa.studentId WHERE ss.Course = 'BSIE';");
+   $cntBSIE = mysqli_fetch_assoc($cntBSIEQ);
+
 ?>
 
 <!DOCTYPE html>
@@ -424,8 +453,8 @@
                      <h2> Activity Log </h2>
                      <hr>
                   </div>
-                 
-                  <table border="0">
+                 <div class="tbl">
+                 <table border="0">
                      <tr>
                         <th> id </th>
                         <th> activity </th>
@@ -446,6 +475,8 @@
                    
                   
                   </table>
+                 </div>
+                 
                   
                </div>
             <!-- xxx Activity Log -->
@@ -538,16 +569,26 @@
 <script>
    const pieData = {
       labels: [
-         'Red',
-         'Blue',
-         'Yellow'
+         'BSIT',
+         'BSA',
+         'BSIE',
+         'BSECE',
+         'BSENT'
       ],
       datasets: [{
          label: 'My First Dataset',
-         data: [300, 50, 100],
+         data: [
+            <?=$cntBSIT['total']?>,
+            <?=$cntBSA['total']?>,
+            <?=$cntBSIE['total']?>,
+            <?=$cntBSECE['total']?>,
+            <?=$cntBSENT['total']?>
+         ],
          backgroundColor: [
             'rgb(255, 99, 132)',
             'rgb(54, 162, 235)',
+            'rgb(54, 235, 84)',
+            'rgb(235, 54, 54)',
             'rgb(255, 205, 86)'
          ],
          hoverOffset: 4

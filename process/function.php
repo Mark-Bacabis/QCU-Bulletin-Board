@@ -149,4 +149,48 @@ function declineAnnounce($id){
 }
 
 
+function ChangeProfile($profile, $empID){
+   include "../include/db_connection.php";
+
+      $img_name = $profile['name'];
+      $img_size = $profile['size'];
+      $img_tmp_name = $profile['tmp_name'];
+      $img_error = $profile['error'];
+
+      //echo $empID."<br>".$img_name;
+      
+      if($img_error === 0){ // check if error is equal to means there's selected file
+         $extension = ['png', 'jpg', 'jpeg', 'JPG', 'PNG', 'JPEG'];
+         $img_ex = pathinfo($img_name, PATHINFO_EXTENSION); // fetch the extension of selected file
+         $img_ex_lc = strtolower($img_ex); // transform the extension to lowercase character
+         
+         if(in_array($img_ex_lc, $extension)) { // check if the selected file contains 'png', 'jpeg', or 'jpg' extension
+            $new_img_name = uniqid('fa', true).'.'.$img_ex_lc; // changing the name of selected file
+            $img_upload_path = 'C:\xampp\htdocs\qcu_bulletin\admin\admin-profile/'.$new_img_name;
+            move_uploaded_file($img_tmp_name, $img_upload_path);
+
+            $upd = mysqli_query($con, "UPDATE `users` SET `avatar` = '$new_img_name' WHERE `empID` = $empID");
+
+            if($upd){
+               $activity = "Changed Profile";
+               $date = date('Y-m-d');
+               $time = date('H:i:s A');  
+               actLog($empID, $activity, $date, $time);
+               echo "Success";
+            }
+
+            
+         } else{
+            $mess = "This is not an image";
+            echo $mess;
+            //header("location:../Student/Settings.php?$mess");
+         }
+      }
+      else{
+         $mess = "No File Selected";
+         echo $mess;
+         //header("location:../Student/Settings.php?$mess");
+      }
+   }
+
 ?>
