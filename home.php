@@ -324,6 +324,7 @@ body.dark .main .bulletin .tab-content .contact .contact_wrapper .help .divone.d
     cursor:pointer;
     margin-top:15px;
   }
+  
   .main .bulletin .tab-content .contact .contact_wrapper .help .divone{
     background:#fff;
     padding:20px;

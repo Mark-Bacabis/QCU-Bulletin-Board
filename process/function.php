@@ -135,18 +135,19 @@ function sendEmail($empID) {
 }
 
 
-function approveAnnounce($id){
+function approveAnnounce($id, $empID){
    include "../include/db_connection.php";
 
-   $upd = "UPDATE `faculty_announcment` SET `status`='Approved' WHERE `id` = $id";
+   $upd = "UPDATE `faculty_announcment` SET `status`='Approved' , `action_by`= $empID WHERE `id` = $id";
    mysqli_query($con, $upd);
+   
 }
 
 
-function declineAnnounce($id){
+function declineAnnounce($id, $empID){
    include "../include/db_connection.php";
 
-   $upd = "UPDATE `faculty_announcment` SET `status`='Declined' WHERE `id` = $id";
+   $upd = "UPDATE `UPDATE `faculty_announcment` SET `status`='Declined' , `action_by`= $empID WHERE `id` = $id";
    mysqli_query($con, $upd);
 }
 

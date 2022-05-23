@@ -1,16 +1,16 @@
 <?php
+   session_start();
    include "../include/db_connection.php";
    include "../process/function.php";
-
-
+   $empID = $_SESSION['empID'];
    $id = $_POST['id'];
 
    if(isset($_POST['addBtn'])){
-      approveAnnounce($id);
+      approveAnnounce($id, $empID);
    }
   
    if(isset($_POST['cancelBtn'])){
-      declineAnnounce($id);
+      declineAnnounce($id, $empID);
    }
   
 
