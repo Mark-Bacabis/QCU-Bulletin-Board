@@ -46,7 +46,7 @@
      $selFacStat = mysqli_query($con, "SELECT u.fullname, fa.* FROM `faculty_announcment` fa
      JOIN `users` u
      ON fa.empID = u.empID
-     WHERE (fa.status = 'Approved' OR fa.status = 'Declined') AND fa.empID = '$empID' ");
+     WHERE (fa.status = 'Approved' OR fa.status = 'Declined') AND fa.action_by = $empID ");
 
 
 ?>
