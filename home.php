@@ -70,6 +70,47 @@
 
 <style>
 
+body.dark .main .bulletin .tab-content .contact .contact_wrapper .contact_form{
+    background:#2b2b2b;
+    color: #fff;;
+}
+
+
+body.dark .main .bulletin .tab-content .contact .contact_wrapper form label{
+    color:#ffffff;
+  }
+
+body.dark  .main .bulletin .tab-content .contact .contact_wrapper form input{
+    background: none;
+    border: 1px solid white;
+    color: white;
+  }
+body.dark  .main .bulletin .tab-content .contact .contact_wrapper form textarea{
+    background: none;
+    border: 1px solid white;
+    color: white;
+  }
+
+body.dark .main .bulletin .tab-content .contact .contact_wrapper .help .divone{
+    background: #2b2b2b;
+}
+body.dark .main .bulletin .tab-content .contact .contact_wrapper .help .divone h3{
+    color:#ddedff;
+}
+body.dark .main .bulletin .tab-content .contact .contact_wrapper .help .divone p{
+    color:#fff;
+}
+
+body.dark .main .bulletin .tab-content .contact .contact_wrapper .help .divone.divtwo span{
+    color:#fff;
+}
+
+
+body.dark .main .bulletin .tab-content .contact .contact_wrapper .help .divone.divtwo span.cont{
+    color: #f9f9f9;
+  } 
+
+
         body{
           background: rgb(240, 240, 240);
         }
@@ -294,7 +335,6 @@
   .main .bulletin .tab-content .contact .contact_wrapper .help .divone h3{
     padding:0;
     font-size:20px;
-    color:#000;
     font-weight:700;
     text-align:left;
     margin-bottom:15px;
