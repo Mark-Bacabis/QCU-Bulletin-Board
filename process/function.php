@@ -147,7 +147,7 @@ function approveAnnounce($id, $empID){
 function declineAnnounce($id, $empID){
    include "../include/db_connection.php";
 
-   $upd = "UPDATE `UPDATE `faculty_announcment` SET `status`='Declined' , `action_by`= $empID WHERE `id` = $id";
+   $upd = "UPDATE `faculty_announcment` SET `status`='Declined', `action_by`= $empID WHERE `id` = $id";
    mysqli_query($con, $upd);
 }
 
